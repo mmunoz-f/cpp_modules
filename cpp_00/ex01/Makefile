@@ -3,18 +3,18 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
+#    By: miguel <miguel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/08/25 22:52:36 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/08/26 11:32:25 by miguel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CC = clang++
-CFLAGS = -Wall -Werror -Werror
+CFLAGS = -Wall -Werror -Wextra
 
 TIME = $(shell date +'%d/%m/%Y %H:%M:%S')
-M=
+M =
 
 NAME =
 
@@ -37,5 +37,6 @@ re: fclean all
 push: fclean
 	git add ../..
 	git commit -m "$(TIME) - $M"
+	git push origin master
 
 .PHONY: all clean fclean re push
