@@ -13,6 +13,9 @@
 CC = clang++
 CFLAGS = -Wall -Werror -Werror
 
+TIME = $(shell date +'%d/%m/%Y %H:%M:%S')
+M=
+
 NAME =
 
 SRCS =
@@ -31,4 +34,8 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+push: fclean
+	git add ../..
+	git commit -m "$(TIME) - $M"
+
+.PHONY: all clean fclean re push

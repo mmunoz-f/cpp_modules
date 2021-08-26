@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phone_book.class.hpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:05:44 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/25 23:45:22 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/26 11:27:34 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,16 @@ class	Phone_book{
 
 	public:
 
-	Phone_book(const unsigned int cap);
-	~Phone_book(void);
+		Phone_book(const unsigned int cap);
+		~Phone_book(void);
 
-	void	exec_command(std::string) const;
+		void	exec_command(std::string);
+
+	private:
+
+		void	add_command();
+		void	search_command();
+		void	exit_command();
 };
 
 #endif
