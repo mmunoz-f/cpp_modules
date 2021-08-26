@@ -3,36 +3,47 @@
 /*                                                        :::      ::::::::   */
 /*   Phone_book.class.cpp                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:09:14 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/26 11:27:57 by miguel           ###   ########.fr       */
+/*   Updated: 2021/08/26 20:26:40 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include <string>
-#include <cstring>
 #include "Phone_book.class.hpp"
+#include "Contact.class.hpp"
 
-Phone_book::Phone_book(const unsigned int cap) : cap(cap) {
-
-	return ;
-}
-
-Phone_book::~Phone_book(void){
+Phone_book::Phone_book(const unsigned int cap) : _cap(cap) {
 
 	return ;
 }
 
-void	Phone_book::exec_command(std::string command){
+Phone_book::~Phone_book(void) {
 
-	if (command.compare("ADD") == 0)
-		Phone_book::add_command();
+	return ;
+}
 
-	else if (command.compare("SEARCH") == 0)
-		Phone_book::search_command();
+void	Phone_book::start_phone_book(void) {
 
-	else if (command.compare("EXIT") == 0)
-		Phone_book::exit_command();
+	std::string	command;
+
+	while (1) {
+
+		std::getline(std::cin, command);
+
+		if (command.compare("ADD") == 0)
+			Phone_book::add_command();
+
+		else if (command.compare("SEARCH") == 0)
+			Phone_book::search_command();
+
+		else if (command.compare("EXIT"))
+			return ;
+
+		else
+			std::cout << "Not a valid command. Try again" << std::endl;
+	}
+
 }
