@@ -1,40 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phone_book.class.hpp                               :+:      :+:    :+:   */
+/*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/25 23:05:44 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/26 20:26:34 by mmunoz-f         ###   ########.fr       */
+/*   Created: 2021/08/25 23:08:39 by mmunoz-f          #+#    #+#             */
+/*   Updated: 2021/08/27 00:53:35 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_CLASS_H
-# define PHONE_BOOK_CLASS_H
+#include <iostream>
+#include <string>
+#include "Contact.hpp"
 
-# include <iostream>
-# include <string>
-# include "Contact.class.hpp"
+Contact::Contact(void) : _n(_total) {
 
-class	Phone_book{
+	_total++;
 
-	public:
+	return ;
+}
 
-		Phone_book(const unsigned int cap);
-		~Phone_book(void);
+Contact::~Contact(void) {
 
-		void	exec_command(std::string);
-		void	start_phone_book();
+	_total--;
 
-		void	add_command();
-		void	search_command() const;
+	return ;
+}
 
-	private:
+unsigned int	Contact::get_n(void) const {
 
-		const unsigned int	_cap;
-		const Contact	*_contacts;
+	return (this->_n);
+}
 
-};
+unsigned int	Contact::get_total(void) const {
 
-#endif
+	return (this->_total);
+}
+
+unsigned int	Contact::_total = 0;
