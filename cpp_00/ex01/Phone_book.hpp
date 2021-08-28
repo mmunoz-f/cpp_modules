@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Phone_book.hpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:05:44 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/27 00:49:18 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/28 17:51:08 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ class	Phone_book {
 
 		const unsigned int	_cap;
 		Contact	_contacts[M_PHONE_BOOK_CAP];
-
 };
 
 #endif

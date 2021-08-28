@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   phone_book.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:09:14 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/27 00:47:04 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/28 18:18:08 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,31 +25,38 @@ Phone_book::~Phone_book(void) {
 	return ;
 }
 
+void	Phone_book::search_command(void) const {
+
+	unsigned int	i;
+
+	i = 0;
+	while (i < M_PHONE_BOOK_CAP) {
+
+		if ()
+	}
+}
+
 void	Phone_book::add_command(void) {
 
 	unsigned int	i;
-	unsigned int	total;
-
-	total = this->_contacts[0].get_total();
+	unsigned int	aux;
+	unsigned int	n;
+	unsigned int	oldest;
 
 	i = 0;
-	while (i < total && this->_contacts[i].first_name.empty())
+	n = 0;
+	while (i < M_PHONE_BOOK_CAP) {
+
+		aux = this->_contacts[i].get_n();
+		if (aux < n) {
+
+			n = aux;
+			oldest = i;
+		}
 		i++;
+	}
 
-	std::cout << "New contact's first name:" << std::endl;
-	std::getline(std::cin, this->_contacts[i].first_name);
-
-	std::cout << "New contact's last name:" << std::endl;
-	std::getline(std::cin, this->_contacts[i].last_name);
-
-	std::cout << "New contact's nickname:" << std::endl;
-	std::cin >> this->_contacts[i].nickname;
-
-	std::cout << "New contact's number:" << std::endl;
-	std::getline(std::cin, this->_contacts[i].first_name);
-
-	std::cout << "New contact's darkest secret:" << std::endl;
-	std::getline(std::cin, this->_contacts[i].darkest_secret);
+	this->_contacts[oldest].set_contact_data();
 }
 
 void	Phone_book::start_phone_book(void) {
