@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:08:39 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/29 17:27:35 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/29 21:17:19 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,11 +51,11 @@ void	Contact::get_contact_data(void) const {
 	std::cout << std::endl << std::endl;
 
 	std::cout << "Number:" << std::endl;
-	std::cout << this->number;
+	std::cout << this->_number;
 	std::cout << std::endl << std::endl;
 
 	std::cout << "Darkest secret:" << std::endl;
-	std::cout << this->darkest_secret;
+	std::cout << this->_darkest_secret;
 	std::cout << std::endl << std::endl;
 }
 
@@ -80,13 +80,13 @@ int	Contact::set_contact_data(void) {
 
 	std::cout << "New contact's number:" << std::endl;
 	std::cin >> aux;
-	this->number = atoi(aux);
-	if (this->number < M_MIN_PHONE_NUMBER || this->number > M_MAX_PHONE_NUMBER)
+	this->_number = atoi(aux);
+	if (this->_number < M_MIN_PHONE_NUMBER || this->_number > M_MAX_PHONE_NUMBER)
 		return (1);
 
 	std::cout << "New contact's darkest secret:" << std::endl;
-	std::cin >> this->darkest_secret;
-	if (this->darkest_secret.empty())
+	std::cin >> this->_darkest_secret;
+	if (this->_darkest_secret.empty())
 		return (1);
 
 	this->_n = ++this->_total;

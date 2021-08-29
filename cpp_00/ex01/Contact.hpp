@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 22:55:20 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/29 17:23:36 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/29 21:16:42 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,8 @@ class	Contact {
 
 	private:
 
-		int			number;
-		std::string	darkest_secret;
+		int			_number;
+		std::string	_darkest_secret;
 
 		static unsigned int	_total;
 		unsigned int	_n;
