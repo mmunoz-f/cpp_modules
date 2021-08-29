@@ -3,28 +3,30 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: miguel <miguel@student.42.fr>              +#+  +:+       +#+         #
+#    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/08/26 11:32:25 by miguel           ###   ########.fr        #
+#    Updated: 2021/08/29 17:03:39 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-CC = clang++
-CFLAGS = -Wall -Werror -Wextra
+CXX = clang++
+CXXFLAGS = -Wall -Werror -Wextra -fsanitize=address
 
 TIME = $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
 
-NAME =
+NAME = phone_book
 
-SRCS =
+SRCS = main.cpp Contact.cpp Phone_book.cpp
 OBJS = $(SRCS:.cpp=.o)
+
+.o:
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $(OBJS)
 
 clean:
 	rm -f $(OBJS)

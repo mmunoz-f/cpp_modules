@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.cpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:08:39 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/28 18:18:02 by miguel           ###   ########.fr       */
+/*   Updated: 2021/08/29 17:27:35 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,10 +36,32 @@ unsigned int	Contact::get_total(void) const {
 
 unsigned int	Contact::_total = 0;
 
+void	Contact::get_contact_data(void) const {
 
-int	Contact::set_contact_data(void){
+	std::cout << "First name:" << std::endl;
+	std::cout << this->first_name;
+	std::cout << std::endl << std::endl;
 
-	char			*aux;
+	std::cout << "Last name:" << std::endl;
+	std::cout << this->last_name;
+	std::cout << std::endl << std::endl;
+
+	std::cout << "Nickname:" << std::endl;
+	std::cout << this->nickname;
+	std::cout << std::endl << std::endl;
+
+	std::cout << "Number:" << std::endl;
+	std::cout << this->number;
+	std::cout << std::endl << std::endl;
+
+	std::cout << "Darkest secret:" << std::endl;
+	std::cout << this->darkest_secret;
+	std::cout << std::endl << std::endl;
+}
+
+int	Contact::set_contact_data(void) {
+
+	char	aux[1024];
 
 	std::cout << "New contact's first name:" << std::endl;
 	std::cin >> this->first_name;
@@ -68,4 +90,5 @@ int	Contact::set_contact_data(void){
 		return (1);
 
 	this->_n = ++this->_total;
+	return (0);
 }

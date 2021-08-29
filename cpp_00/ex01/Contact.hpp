@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Contact.hpp                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 22:55:20 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/28 18:16:35 by miguel           ###   ########.fr       */
+/*   Updated: 2021/08/29 17:23:36 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,19 +22,21 @@ class	Contact {
 
 	public:
 
+		std::string	first_name;
+		std::string	last_name;
+		std::string	nickname;
+
 		Contact(void);
 		Contact(std::string first_name, std::string last_name, std::string nickname, int number, std::string darkest_secret);
 		~Contact(void);
 
 		int				set_contact_data(void);
+		void			get_contact_data(void) const;
 		unsigned int	get_total(void) const;
 		unsigned int	get_n(void) const;
 
 	private:
 
-		std::string	first_name;
-		std::string	last_name;
-		std::string	nickname;
 		int			number;
 		std::string	darkest_secret;
 
