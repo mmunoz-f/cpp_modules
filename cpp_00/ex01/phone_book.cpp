@@ -6,13 +6,15 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:09:14 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/29 17:23:54 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/30 21:54:27 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <ios>
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <limits>
 #include "Phone_book.hpp"
 #include "Contact.hpp"
 
@@ -27,25 +29,63 @@ Phone_book::~Phone_book(void) {
 	return ;
 }
 
+void	display_index(void) {
+
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << "index" << "|";
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << "first name" << "|";
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << "last name" << "|";
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << "nickname" << "|" << std::endl;
+}
+
+void	display_contact(unsigned int n, const Contact contact) {
+
+	std::string	aux;
+
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << n << "|";
+
+	aux = contact.get_first_name();
+	if (aux.size() > 10)
+		aux.replace(9, 2, ".", 0, 1);
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << aux.substr(0, 10) << "|";
+
+	aux = contact.get_last_name();
+	if (aux.size() > 10)
+		aux.replace(9, 2, ".", 0, 1);
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << aux.substr(0, 10) << "|";
+
+	aux = contact.get_nickname();
+	if (aux.size() > 10)
+		aux.replace(9, 2, ".", 0, 1);
+	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << aux.substr(0, 10) << "|" << std::endl;
+}
+
 void	Phone_book::search_command(void) const {
 
 	unsigned int	i;
 
-	std::cout << std::setw(10) << std::setfill('.'); // not sure if this will work
-	std::cout << "index" << "|" << "first name" << "|" << "last name" << "|" << "nickname" << std::endl;
+	display_index();
 
 	i = 0;
 	while (i < M_PHONE_BOOK_CAP) {
 
 		if (this->_contacts[i].get_n() > 0)
-			std::cout << i + 1 << this->_contacts[i].first_name << this->_contacts[i].last_name << this->_contacts[i].nickname << std::endl;
+			display_contact(i + 1, this->_contacts[i]);
 		i++;
 	}
 
-	std::cout << "Contacts index:" << std::endl;
+	std::cout << std::endl << "Contacts index:" << std::endl;
 	std::cin >> i;
+	if (std::cin.fail())
+		std::cin.clear();
+	std::cin.ignore(INT_MAX, '\n');
+	std::cout << std::endl;
 
-	this->_contacts[i].get_contact_data();
+	if (i > M_PHONE_BOOK_CAP || i < 1 || !this->_contacts[i - 1].get_n()) {
+
+		std::cout << "Not an existing contact" << std::endl;
+		return ;
+	}
+	this->_contacts[i - 1].get_contact_data();
 }
 
 void	Phone_book::add_command(void) {
@@ -56,13 +96,12 @@ void	Phone_book::add_command(void) {
 	unsigned int	oldest;
 
 	i = 0;
-	n = 0;
+	n = this->_contacts[0].get_total();
 	oldest = 0;
 	while (i < M_PHONE_BOOK_CAP) {
 
 		aux = this->_contacts[i].get_n();
 		if (aux < n) {
-
 			n = aux;
 			oldest = i;
 		}
@@ -79,11 +118,10 @@ void	Phone_book::start_phone_book(void) {
 
 	std::cout << "Welcome to you own phone book:" << std::endl;
 
-	while (1) {
+	while (!std::cin.eof()) {
 
-		std::cout << "Enter a command" << std::endl;
-
-		std::cin >> command;
+		std::cout << std::endl << "Enter a command" << std::endl;
+		std::getline(std::cin, command);
 
 		if (command == "ADD")
 			this->add_command();
@@ -93,8 +131,5 @@ void	Phone_book::start_phone_book(void) {
 
 		else if (command == "EXIT")
 			return ;
-
-		else
-			std::cout << "Not a valid command. Try again" << std::endl;
 	}
 }

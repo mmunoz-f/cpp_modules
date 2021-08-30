@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 22:55:20 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/29 21:16:42 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/30 17:00:44 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,12 +22,8 @@ class	Contact {
 
 	public:
 
-		std::string	first_name;
-		std::string	last_name;
-		std::string	nickname;
-
 		Contact(void);
-		Contact(std::string first_name, std::string last_name, std::string nickname, int number, std::string darkest_secret);
+		Contact(std::string _first_name, std::string _last_name, std::string _nickname, std::string _number, std::string _darkest_secret);
 		~Contact(void);
 
 		int				set_contact_data(void);
@@ -35,9 +31,18 @@ class	Contact {
 		unsigned int	get_total(void) const;
 		unsigned int	get_n(void) const;
 
+		std::string		get_first_name(void) const;
+		std::string		get_last_name(void) const;
+		std::string		get_nickname(void) const;
+		std::string		get_number(void) const;
+		std::string		get_darkest_secret(void) const;
+
 	private:
 
-		int			_number;
+		std::string	_first_name;
+		std::string	_last_name;
+		std::string	_nickname;
+		std::string	_number;
 		std::string	_darkest_secret;
 
 		static unsigned int	_total;
