@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phone_book.cpp                                     :+:      :+:    :+:   */
+/*   Phone_book.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:09:14 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 13:07:22 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/31 21:52:04 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,31 +60,27 @@ void	display_contact(unsigned int n, const Contact contact) {
 
 void	Phone_book::search_command(void) const {
 
-	unsigned int	i;
+	int	index;
 
 	display_index();
 
-	i = 0;
-	while (i < M_PHONE_BOOK_CAP) {
-
+	for (int i = 0; i < M_PHONE_BOOK_CAP; i++)
 		if (this->_contacts[i].get_n() > 0)
 			display_contact(i + 1, this->_contacts[i]);
-		i++;
-	}
 
 	std::cout << std::endl << "Contacts index:" << std::endl;
-	std::cin >> i;
+	std::cin >> index;
 	if (std::cin.fail())
 		std::cin.clear();
 	std::cin.ignore(INT_MAX, '\n');
 	std::cout << std::endl;
 
-	if (i > M_PHONE_BOOK_CAP || i < 1 || !this->_contacts[i - 1].get_n()) {
+	if (index > M_PHONE_BOOK_CAP || index < 1 || !this->_contacts[index - 1].get_n()) {
 
 		std::cout << "Not an existing contact" << std::endl;
 		return ;
 	}
-	this->_contacts[i - 1].print_data();
+	this->_contacts[index - 1].print_data();
 }
 
 void	Phone_book::add_command(void) {
@@ -97,14 +93,13 @@ void	Phone_book::add_command(void) {
 	i = 0;
 	n = this->_contacts[0].get_total();
 	oldest = 0;
-	while (i < M_PHONE_BOOK_CAP) {
+	for (int i = 0; i < M_PHONE_BOOK_CAP; i++) {
 
 		aux = this->_contacts[i].get_n();
 		if (aux < n) {
 			n = aux;
 			oldest = i;
 		}
-		i++;
 	}
 
 	if (this->_contacts[oldest].set_contact_data())
