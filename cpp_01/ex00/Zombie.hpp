@@ -1,37 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phone_book.hpp                                     :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/25 23:05:44 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 13:40:34 by mmunoz-f         ###   ########.fr       */
+/*   Created: 2021/08/31 13:33:17 by mmunoz-f          #+#    #+#             */
+/*   Updated: 2021/08/31 16:25:12 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHONE_BOOK_H
-# define PHONE_BOOK_H
+#ifndef ZOMBIE_H
+# define ZOMBIE_H
 
 # include <string>
-# include "Contact.hpp"
 
-# define M_PHONE_BOOK_CAP 2
+class	Zombie {
 
-class	Phone_book {
-
-	const unsigned int	_cap;
-	Contact	_contacts[M_PHONE_BOOK_CAP];
+	const std::string	_name;
 
 	public:
 
-		Phone_book(void);
-		~Phone_book(void);
+		Zombie(void);
+		Zombie(std::string name);
+		~Zombie(void);
 
-		void	start_phone_book(void);
-
-		void	add_command(void);
-		void	search_command(void) const;
+		void	announce(void) const ;
 };
+
+Zombie	*newZombie(std::string name);
+void	randomChump(std::string name);
 
 #endif
