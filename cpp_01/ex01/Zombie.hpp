@@ -1,33 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   Zombie.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/08/31 13:32:33 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 16:39:35 by mmunoz-f         ###   ########.fr       */
+/*   Created: 2021/08/31 13:33:17 by mmunoz-f          #+#    #+#             */
+/*   Updated: 2021/08/31 16:48:20 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Zombie.hpp"
+#ifndef ZOMBIE_H
+# define ZOMBIE_H
 
-int	main(void) {
+# include <string>
 
-	Zombie	zombie;
-	Zombie	juan("juan");
-	Zombie	*heapzombie;
-	Zombie	*manuel;
-	Zombie	*sebastian;
+class	Zombie {
 
-	heapzombie = new Zombie();
-	delete heapzombie;
-	manuel = new Zombie("manuel");
-	randomChump("javier");
-	sebastian = newZombie("sebastian");
+	std::string	_name;
 
-	delete manuel;
-	delete sebastian;
+	public:
 
-	return (0);
-}
+		Zombie(void);
+		Zombie(std::string name);
+		~Zombie(void);
+
+		void	announce(void) const ;
+
+		void	set_name(std::string name);
+};
+
+Zombie	*zombieHorde(int N, std::string name);
+
+#endif

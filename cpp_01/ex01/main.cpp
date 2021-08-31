@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:32:33 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 16:39:35 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/31 17:09:13 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,20 +14,10 @@
 
 int	main(void) {
 
-	Zombie	zombie;
-	Zombie	juan("juan");
-	Zombie	*heapzombie;
-	Zombie	*manuel;
-	Zombie	*sebastian;
+	Zombie	*juanes;
 
-	heapzombie = new Zombie();
-	delete heapzombie;
-	manuel = new Zombie("manuel");
-	randomChump("javier");
-	sebastian = newZombie("sebastian");
+	juanes = zombieHorde(20, "juan");
 
-	delete manuel;
-	delete sebastian;
-
+	delete [] juanes;
 	return (0);
 }
