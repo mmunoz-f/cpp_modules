@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:08:39 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/30 21:44:56 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/31 12:59:31 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,27 +61,13 @@ std::string	Contact::get_darkest_secret(void) const {
 	return (this->_darkest_secret);
 }
 
-void	Contact::get_contact_data(void) const {
+void	Contact::print_data(void) const {
 
-	std::cout << "First name:" << std::endl;
-	std::cout << this->_first_name;
-	std::cout << std::endl << std::endl;
-
-	std::cout << "Last name:" << std::endl;
-	std::cout << this->_last_name;
-	std::cout << std::endl << std::endl;
-
-	std::cout << "Nickname:" << std::endl;
-	std::cout << this->_nickname;
-	std::cout << std::endl << std::endl;
-
-	std::cout << "Number:" << std::endl;
-	std::cout << this->_number;
-	std::cout << std::endl << std::endl;
-
-	std::cout << "Darkest secret:" << std::endl;
-	std::cout << this->_darkest_secret;
-	std::cout << std::endl << std::endl;
+	std::cout << "First name: " << this->_first_name << std::endl;
+	std::cout << "Last name: " << this->_last_name << std::endl;
+	std::cout << "Nickname: " << this->_nickname << std::endl;
+	std::cout << "Number: " << this->_number << std::endl;
+	std::cout << "Darkest secret: " << this->_darkest_secret << std::endl;
 }
 
 int	Contact::set_contact_data(void) {

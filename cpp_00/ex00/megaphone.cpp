@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 20:52:38 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/25 22:45:15 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/31 12:34:31 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ int	main(int argc, char **argv){
 	int	i;
 
 	if (argc < 2)
-		return (1);
+		std::cout << "* LOUD AND UNBEARABLE FEEDBACK NOISE *";
 
 	i = 1;
 	while (i < argc){
-		std::cout << ::str_capitalize(argv[i++]);
+		std::cout << str_capitalize(argv[i++]);
 		if (i != argc)
 			std::cout << ' ';
 	}

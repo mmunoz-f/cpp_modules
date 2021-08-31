@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 22:55:20 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/30 17:00:44 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/31 12:59:51 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class	Contact {
 		~Contact(void);
 
 		int				set_contact_data(void);
-		void			get_contact_data(void) const;
+		void			print_data(void) const;
 		unsigned int	get_total(void) const;
 		unsigned int	get_n(void) const;
 

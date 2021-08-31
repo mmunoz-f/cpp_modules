@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:09:14 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/30 21:54:27 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/08/31 13:07:22 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
 
 Phone_book::Phone_book(void) : _cap(M_PHONE_BOOK_CAP) {
 
-	this->start_phone_book();
 	return ;
 }
 
@@ -85,7 +84,7 @@ void	Phone_book::search_command(void) const {
 		std::cout << "Not an existing contact" << std::endl;
 		return ;
 	}
-	this->_contacts[i - 1].get_contact_data();
+	this->_contacts[i - 1].print_data();
 }
 
 void	Phone_book::add_command(void) {
