@@ -6,12 +6,12 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/08/31 21:10:37 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/09/01 17:14:12 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 CXX = clang++
-CXXFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
+CXXFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 
 TIME = $(shell date +'%d/%m/%Y %H:%M:%S')
 M =

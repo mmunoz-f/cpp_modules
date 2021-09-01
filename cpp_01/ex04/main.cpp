@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 21:08:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/01 14:59:21 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 17:27:37 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,31 +14,32 @@
 #include <fstream>
 #include <string>
 
-void	replace(std::ifstream &ifs, std::ofstream &ofs, std::string str1, std::string str2) {
+int	replace(std::ifstream &ifs, std::ofstream &ofs, std::string str1, std::string str2) {
 
-	std::streamsize size = ifs.gcount();
-	char			src[size + 1];
-	std::string		srcstring;
-	//size_t			pos;
-	//size_t			last_pos;
+	std::string		src;
+	size_t			pos;
+	size_t			last_pos;
 
-	src[size] = 0;
-	ifs.read(src, size);
-	srcstring = src;
+	if (str2.empty() || str1.empty()) {
+		std::cout << "Error\nNot valid argumnets" << std::endl;
+		return (1);
+	}
 
-	(void)str1;
-	(void)str2;
-	(void)ofs;
+	while (!ifs.eof()) {
 
-	std::cout << size << std::endl;
+		pos = 0;
+		last_pos = 0;
+		std::getline(ifs, src);
+		while ((pos = src.find(str1, last_pos)) != src.npos) {
 
-	//pos = 0;
-	//last_pos = 0;
-	//while ((pos = srcstring.find(str1, pos)) != srcstring.npos) {
-
-	//	ofs << srcstring.substr(last_pos, pos) << str2;
-	//	pos += str2.size();
-	//}
+			ofs << src.substr(last_pos, pos - last_pos) + str2;
+			last_pos = pos + str1.size();
+		}
+		ofs << src.substr(last_pos);
+		if (!ifs.eof())
+			ofs << std::endl;
+	}
+	return (0);
 }
 
 int	main(int argc, char **argv) {
@@ -49,7 +50,7 @@ int	main(int argc, char **argv) {
 
 	if (argc < 4) {
 
-		std::cout << "Error\nWrong number of arguments" << std::endl;
+		std::cout << "Error\nArguments" << std::endl;
 		return (1);
 	}
 
@@ -69,7 +70,8 @@ int	main(int argc, char **argv) {
 		return (2);
 	}
 
-	::replace(ifs, ofs, argv[2], argv[3]);
+	if (::replace(ifs, ofs, argv[2], argv[3]))
+		return (3);
 
 	ifs.close();
 	ofs.close();
