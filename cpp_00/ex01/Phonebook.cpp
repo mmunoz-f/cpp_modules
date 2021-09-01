@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Phone_book.cpp                                     :+:      :+:    :+:   */
+/*   Phonebook.cpp                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:09:14 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/01 13:22:44 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 16:04:39 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,56 +15,56 @@
 #include <iomanip>
 #include <string>
 #include <limits>
-#include "Phone_book.hpp"
+#include "Phonebook.hpp"
 #include "Contact.hpp"
 
-Phone_book::Phone_book(void) {
+Phonebook::Phonebook(void) {
 
 	return ;
 }
 
-Phone_book::~Phone_book(void) {
+Phonebook::~Phonebook(void) {
 
 	return ;
 }
 
 void	display_index(void) {
 
-	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << "index" << "|";
-	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << "first name" << "|";
-	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << "last name" << "|";
-	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << "nickname" << "|" << std::endl;
+	std::cout << std::setiosflags(std::ios::right) << std::setw(10) << "index" << "|";
+	std::cout << std::setiosflags(std::ios::right) << std::setw(10) << "first name" << "|";
+	std::cout << std::setiosflags(std::ios::right) << std::setw(10) << "last name" << "|";
+	std::cout << std::setiosflags(std::ios::right) << std::setw(10) << "nickname" << "|" << std::endl;
 }
 
 void	display_contact(unsigned int n, const Contact contact) {
 
 	std::string	aux;
 
-	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << n << "|";
+	std::cout << std::setiosflags(std::ios::right) << std::setw(10) << n << "|";
 
 	aux = contact.get_first_name();
 	if (aux.size() > 10)
 		aux.replace(9, 2, ".", 0, 1);
-	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << aux.substr(0, 10) << "|";
+	std::cout << std::setiosflags(std::ios::right) << std::setw(10) << aux.substr(0, 10) << "|";
 
 	aux = contact.get_last_name();
 	if (aux.size() > 10)
 		aux.replace(9, 2, ".", 0, 1);
-	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << aux.substr(0, 10) << "|";
+	std::cout << std::setiosflags(std::ios::right) << std::setw(10) << aux.substr(0, 10) << "|";
 
 	aux = contact.get_nickname();
 	if (aux.size() > 10)
 		aux.replace(9, 2, ".", 0, 1);
-	std::cout << std::setiosflags(std::ios::left) << std::setw(10) << aux.substr(0, 10) << "|" << std::endl;
+	std::cout << std::setiosflags(std::ios::right) << std::setw(10) << aux.substr(0, 10) << "|" << std::endl;
 }
 
-void	Phone_book::search_command(void) const {
+void	Phonebook::search_command(void) const {
 
 	int	index;
 
 	display_index();
 
-	for (int i = 0; i < M_PHONE_BOOK_CAP; i++)
+	for (int i = 0; i < M_PHONEBOOK_CAP; i++)
 		if (this->_contacts[i].get_n() > 0)
 			display_contact(i + 1, this->_contacts[i]);
 
@@ -75,7 +75,7 @@ void	Phone_book::search_command(void) const {
 	std::cin.ignore(INT_MAX, '\n');
 	std::cout << std::endl;
 
-	if (index > M_PHONE_BOOK_CAP || index < 1 || !this->_contacts[index - 1].get_n()) {
+	if (index > M_PHONEBOOK_CAP || index < 1 || !this->_contacts[index - 1].get_n()) {
 
 		std::cout << "Not an existing contact" << std::endl;
 		return ;
@@ -83,7 +83,7 @@ void	Phone_book::search_command(void) const {
 	this->_contacts[index - 1].print_data();
 }
 
-void	Phone_book::add_command(void) {
+void	Phonebook::add_command(void) {
 
 	unsigned int	i;
 	unsigned int	aux;
@@ -93,7 +93,7 @@ void	Phone_book::add_command(void) {
 	i = 0;
 	n = this->_contacts[0].get_total();
 	oldest = 0;
-	for (int i = 0; i < M_PHONE_BOOK_CAP; i++) {
+	for (int i = 0; i < M_PHONEBOOK_CAP; i++) {
 
 		aux = this->_contacts[i].get_n();
 		if (aux < n) {
@@ -106,7 +106,7 @@ void	Phone_book::add_command(void) {
 		std::cout << "Error, contact not saved" << std::endl;
 }
 
-void	Phone_book::start_phone_book(void) {
+void	Phonebook::start_phone_book(void) {
 
 	std::string	command;
 

@@ -6,7 +6,7 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/08/30 20:26:06 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/09/01 16:07:19 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CXXFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 TIME = $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
 
-NAME = phone_book
+NAME = phonebook
 
-SRCS = main.cpp Contact.cpp Phone_book.cpp
+SRCS = main.cpp Contact.cpp Phonebook.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 .o:
