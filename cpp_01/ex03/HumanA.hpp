@@ -6,12 +6,12 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 19:55:00 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 20:36:42 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 13:20:01 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANA_H
-# define HUMANA_H
+#ifndef __HUMANA_H__
+# define __HUMANA_H__
 
 # include <string>
 # include "Weapon.hpp"

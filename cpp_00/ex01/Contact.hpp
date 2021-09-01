@@ -6,12 +6,12 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 22:55:20 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 13:38:18 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 13:19:00 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CONTACT_H
-# define CONTACT_H
+#ifndef __CONTACT_H__
+# define __CONTACT_H__
 
 # include <string>
 

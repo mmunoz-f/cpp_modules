@@ -6,12 +6,12 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 19:56:12 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 21:00:42 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 13:20:11 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef HUMANB_H
-# define HUMANB_H
+#ifndef __HUMANB_H__
+# define __HUMANB_H__
 
 # include <string>
 # include "Weapon.hpp"

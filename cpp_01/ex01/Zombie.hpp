@@ -6,12 +6,12 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:33:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 16:48:20 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 13:19:46 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_H
-# define ZOMBIE_H
+#ifndef __ZOMBIE_H__
+# define __ZOMBIE_H__
 
 # include <string>
 
