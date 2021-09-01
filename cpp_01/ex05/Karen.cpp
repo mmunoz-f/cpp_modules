@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 17:36:55 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/01 18:47:51 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 19:16:48 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,6 @@ void	Karen::complain(std::string level) const {
 
 	for (int i = 0; i < 4; i++) {
 		if (level == levels[i]) {
-
 			(this->*functions[i])();
 			return ;
 		}

@@ -76,7 +76,6 @@ void	Phonebook::search_command(void) const {
 	std::cout << std::endl;
 
 	if (index > M_PHONEBOOK_CAP || index < 1 || !this->_contacts[index - 1].get_n()) {
-
 		std::cout << "Not an existing contact" << std::endl;
 		return ;
 	}
@@ -94,7 +93,6 @@ void	Phonebook::add_command(void) {
 	n = this->_contacts[0].get_total();
 	oldest = 0;
 	for (int i = 0; i < M_PHONEBOOK_CAP; i++) {
-
 		aux = this->_contacts[i].get_n();
 		if (aux < n) {
 			n = aux;
@@ -113,7 +111,6 @@ void	Phonebook::start_phone_book(void) {
 	std::cout << "Welcome to you own phone book:" << std::endl;
 
 	while (!std::cin.eof()) {
-
 		std::cout << std::endl << "Enter a command" << std::endl;
 		std::getline(std::cin, command);
 

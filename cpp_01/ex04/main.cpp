@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 21:08:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/01 17:27:37 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 19:17:50 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,10 @@ int	replace(std::ifstream &ifs, std::ofstream &ofs, std::string str1, std::strin
 	}
 
 	while (!ifs.eof()) {
-
 		pos = 0;
 		last_pos = 0;
 		std::getline(ifs, src);
 		while ((pos = src.find(str1, last_pos)) != src.npos) {
-
 			ofs << src.substr(last_pos, pos - last_pos) + str2;
 			last_pos = pos + str1.size();
 		}
@@ -49,7 +47,6 @@ int	main(int argc, char **argv) {
 	std::string		file;
 
 	if (argc < 4) {
-
 		std::cout << "Error\nArguments" << std::endl;
 		return (1);
 	}
@@ -58,14 +55,12 @@ int	main(int argc, char **argv) {
 
 	ifs.open(file);
 	if (ifs.fail()) {
-
 		std::cout << "Error\nOpen input file fail" << std::endl;
 		return (2);
 	}
 
 	ofs.open(file + ".replace", std::ios::out);
 	if (ofs.fail()) {
-
 		std::cout << "Error\nOpen output file fail" << std::endl;
 		return (2);
 	}
