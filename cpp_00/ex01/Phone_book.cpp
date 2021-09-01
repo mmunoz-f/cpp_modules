@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:09:14 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 21:52:04 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 13:22:44 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 #include "Phone_book.hpp"
 #include "Contact.hpp"
 
-Phone_book::Phone_book(void) : _cap(M_PHONE_BOOK_CAP) {
+Phone_book::Phone_book(void) {
 
 	return ;
 }

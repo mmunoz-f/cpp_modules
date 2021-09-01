@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/25 23:05:44 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/01 13:18:47 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/01 13:25:01 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,10 @@
 # include <string>
 # include "Contact.hpp"
 
-# define M_PHONE_BOOK_CAP 2
+# define M_PHONE_BOOK_CAP 8
 
 class	Phone_book {
 
-	const unsigned int	_cap;
 	Contact	_contacts[M_PHONE_BOOK_CAP];
 
 	public:
