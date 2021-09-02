@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 19:09:32 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/01 19:25:27 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/02 13:57:33 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,16 +16,19 @@
 class	Fixed {
 
 	int					_n;
-	static const int	_bit;
+	static const int	_pointBit;
 
 	public:
 
 		Fixed(void);
 		Fixed(int n);
+		Fixed(const Fixed &fixed);
 		~Fixed(void);
 
+		Fixed	&operator=(const Fixed &fixed);
+
 		int		getRawBits(void) const;
-		void	setRawBits(const int raw);
+		void	setRawBits(const int n);
 };
 
 #endif
