@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Fixed.hpp                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 19:09:32 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/02 18:00:18 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/03 12:28:48 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,22 @@ class	Fixed {
 		Fixed	operator*(const Fixed &fixed) const;
 		Fixed	operator/(const Fixed &fixed) const;
 
+		Fixed	&operator++();
+		Fixed	operator++(int);
+		Fixed	&operator--();
+		Fixed	operator--(int);
+
 		bool	operator<(const Fixed &fixed) const;
 		bool	operator<=(const Fixed &fixed) const;
 		bool	operator>(const Fixed &fixed) const;
 		bool	operator>=(const Fixed &fixed) const;
 		bool	operator==(const Fixed &fixed) const;
 		bool	operator!=(const Fixed &fixed) const;
+
+		static Fixed		&min(Fixed &fixed1, Fixed &fixed2);
+		const static Fixed	&min(const Fixed &fixed1, const Fixed &fixed2);
+		static Fixed		&max(Fixed &fixed1, Fixed &fixed2);
+		const static Fixed	&max(const Fixed &fixed1, const Fixed &fixed);
 
 		float	toFloat(void) const;
 		int		toInt(void) const;
