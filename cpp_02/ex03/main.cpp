@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 19:07:06 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/03 13:36:30 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/03 16:00:53 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 int main(void) {
 
 	Point	p1(0, 0);
-	Point	p2(0, 5);
-	Point	p3(5, 0);
+	Point	p2(5, 0);
+	Point	p3(0, 5);
 	Point	p(0,0);
 
 	std::cout << bsp(p1, p2, p3, p) << std::endl;
@@ -34,7 +34,7 @@ int main(void) {
 	p = Point(-1, 1);
 	std::cout << bsp(p1, p2, p3, p) << std::endl;
 
-	p = Point(5, 5);
+	p = Point(5, 3);
 	std::cout << bsp(p1, p2, p3, p) << std::endl;
 
 	return 0;

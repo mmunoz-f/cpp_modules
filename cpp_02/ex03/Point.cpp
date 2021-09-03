@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/03 12:52:48 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/03 13:29:00 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/03 16:02:27 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,19 @@ Fixed	Point::getY(void) const {
 	return (this->_y);
 }
 
+bool	bsp(const Point p1, const Point p2, const Point p3, const Point p) {
 
-bool	valid_side(const Point p, const Point p1, const Point p2) {
+	Fixed	p1f[2] = {p1.getX(), p1.getY()};
+	Fixed	p2f[2] = {p2.getX(), p2.getY()};
+	Fixed	p3f[2] = {p3.getX(), p3.getY()};
+	Fixed	pf[2] = {p.getX(), p.getY()};
 
-	return ((p.getX() - p2.getX()) * (p1.getY() - p2.getY()) - (p1.getX() - p2.getX()) * (p.getY() - p2.getY()) > 0 ? true : false);
-}
+	float	area = 0.5 * (-(p2f[1]) * p3f[0] + p1f[1] *(-(p2f[0]) + p3f[0]) + p1f[0] *(p2f[1] - p3f[1]) + p2f[0] * p3f[1]).toFloat();
 
-bool	bsp(const Point p1, const Point p2, const Point p3, const Point p0) {
+	float	s = 1 / (2 * area) * (p1f[1] * p3f[0] - p1f[0] * p3f[1] + (p3f[1] - p1f[1]) * pf[0] + (p1f[0] - p3f[0]) * pf[1]).toFloat();
+	float	t = 1 / (2 * area) * (p1f[0] * p2f[1] - p1f[1] * p2f[0] + (p1f[1] - p2f[1]) * pf[0] + (p2f[0] - p1f[0]) * pf[1]).toFloat();
 
-	return (valid_side(p0, p1, p2) & valid_side (p0, p1, p3) & !valid_side(p0, p2, p3));
+	if ((s > 0 && t > 0 && s + t < 1))
+		return (true);
+	return (false);
 }

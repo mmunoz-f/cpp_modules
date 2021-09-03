@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 19:09:32 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/03 13:37:56 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/03 15:19:11 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@ class	Fixed {
 		Fixed	operator++(int);
 		Fixed	&operator--();
 		Fixed	operator--(int);
+
+		Fixed	operator-() const;
 
 		bool	operator<(const Fixed &fixed) const;
 		bool	operator<=(const Fixed &fixed) const;

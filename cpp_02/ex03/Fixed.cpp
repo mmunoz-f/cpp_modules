@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/01 19:25:47 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/03 12:34:39 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/03 15:20:09 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,11 @@ Fixed	Fixed::operator--(int) {
 
 	this->_n--;
 	return (tmp);
+}
+
+Fixed	Fixed::operator-() const {
+
+	return (Fixed(-(this->_n)));
 }
 
 bool	Fixed::operator<(const Fixed &fixed) const {
