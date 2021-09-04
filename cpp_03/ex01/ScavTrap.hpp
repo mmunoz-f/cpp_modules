@@ -6,12 +6,12 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:54:09 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/04 17:01:49 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/04 17:10:41 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef __SCAV_TRAP_H__
-# define __SCAV_TRAP_H__
+#ifndef __SCAVTRAP_H__
+# define __SCAVTRAP_H__
 
 # include "ClapTrap.hpp"
 

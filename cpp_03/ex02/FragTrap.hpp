@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   FragTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/04 14:13:25 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/04 17:30:00 by miguel           ###   ########.fr       */
+/*   Created: 2021/09/04 17:09:33 by miguel            #+#    #+#             */
+/*   Updated: 2021/09/04 17:18:04 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "ScavTrap.hpp"
+#ifndef __FRAGTRAP_H__
+# define __FRAGTRAP_H__
 
-int	main(void) {
+# include "ClapTrap.hpp"
 
-	ClapTrap	jerry("jerry");
-	ScavTrap	tom("tom");
+class	FragTrap : public ClapTrap {
 
+	public:
 
-	tom.attack(jerry.getName());
-	jerry.takeDamage(tom.getAttackDamage());
-	jerry.beRepaired(10);
+		FragTrap(void);
+		FragTrap(const std::string name);
+		FragTrap(const FragTrap &st);
+		~FragTrap(void);
 
-	tom.guardGate();
+		FragTrap	&operator=(const FragTrap &st);
 
-	return (0);
-}
+		void	attack(const std::string &target) const;
+		void	highFiveGuys(void) const;
+};
+
+#endif

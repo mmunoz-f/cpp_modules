@@ -1,29 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScavTrap.hpp                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/04 14:13:25 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/04 17:30:00 by miguel           ###   ########.fr       */
+/*   Created: 2021/09/04 15:54:09 by miguel            #+#    #+#             */
+/*   Updated: 2021/09/04 17:10:12 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "ScavTrap.hpp"
+#ifndef __SCAVTRAP_H__
+# define __SCAVTRAP_H__
 
-int	main(void) {
+# include "ClapTrap.hpp"
 
-	ClapTrap	jerry("jerry");
-	ScavTrap	tom("tom");
+class	ScavTrap : public ClapTrap {
 
+	public:
 
-	tom.attack(jerry.getName());
-	jerry.takeDamage(tom.getAttackDamage());
-	jerry.beRepaired(10);
+		ScavTrap(void);
+		ScavTrap(const std::string name);
+		ScavTrap(const ScavTrap &st);
+		~ScavTrap(void);
 
-	tom.guardGate();
+		ScavTrap	&operator=(const ScavTrap &st);
 
-	return (0);
-}
+		void	attack(const std::string &target) const;
+		void	guardGate(void) const;
+};
+
+#endif
