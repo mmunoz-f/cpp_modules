@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 14:13:58 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/04 17:04:52 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/04 17:04:41 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,26 @@ int	ClapTrap::getEnergyPoints(void) const {
 int	ClapTrap::getAttackDamage(void) const {
 
 	return (this->_attacktDamage);
+}
+
+void	ClapTrap::setName(std::string name) {
+
+	this->_name = name;
+}
+
+void	ClapTrap::setHitPoints(int hitPoints) {
+
+	this->_hitPoints = hitPoints;
+}
+
+void	ClapTrap::setEnergyPoints(int energyPoints) {
+
+	this->_energyPoints = energyPoints;
+}
+
+void	ClapTrap::setAttackDamage(int attackDamage) {
+
+	this->_attacktDamage = attackDamage;
 }
 
 void	ClapTrap::attack(const std::string &target) const {
