@@ -6,7 +6,7 @@
 #    By: miguel <miguel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/09/03 13:36:53 by miguel           ###   ########.fr        #
+#    Updated: 2021/09/04 15:47:39 by miguel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CXXFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 TIME = $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
 
-NAME = bsp
+NAME = ClapTrap
 
-SRCS = main.cpp Fixed.cpp Point.cpp
+SRCS = main.cpp ClapTrap.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 .o:
