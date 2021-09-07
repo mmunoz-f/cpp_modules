@@ -6,46 +6,46 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 17:56:34 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/04 17:59:47 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/06 12:59:16 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "DiamondTrap.hpp"
 
-DiamondTrap::DiamondTrap(void) : ClapTrap("DiamondTrap") {
+DiamondTrap::DiamondTrap(void) : ScavTrap(), FragTrap() {
 
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attacktDamage = 20;
+	this->_name = "DiamondTrap";
+	this->ClapTrap::_name = this->_name + ClapTrap::_name;
 
-	std::cout << this->_name << " has been promoted" << std::endl;
+	std::cout << this->_name << " has evolved" << std::endl;
 	return ;
 }
 
-DiamondTrap::DiamondTrap(std::string name) : ClapTrap(name) {
+DiamondTrap::DiamondTrap(std::string name) : ScavTrap(name), FragTrap(name) {
 
-	this->_hitPoints = 100;
-	this->_energyPoints = 50;
-	this->_attacktDamage = 20;
+	this->_name = name;
+	this->ClapTrap::_name = this->_name + ClapTrap::_name;
 
-	std::cout << this->_name << " has been promoted" << std::endl;
+	std::cout << this->_name << " has evolved" << std::endl;
 	return ;
 }
 
-DiamondTrap::DiamondTrap(const DiamondTrap &st) : ClapTrap(st.getName()) {
+DiamondTrap::DiamondTrap(const DiamondTrap &st) : ScavTrap(), FragTrap() {
 
+	this->_name = st.getName();
+	this->ClapTrap::_name = this->_name + st.ClapTrap::_name;
 	this->_hitPoints = st.getHitPoints();
 	this->_energyPoints = st.getEnergyPoints();
 	this->_attacktDamage = st.getAttackDamage();
 
-	std::cout << this->_name << " has been promoted" << std::endl;
+	std::cout << this->_name << " has evolved" << std::endl;
 	return ;
 }
 
 DiamondTrap::~DiamondTrap(void) {
 
-	std::cout << this->_name << " was slain" << std::endl;
+	std::cout << this->_name << " was destroyed" << std::endl;
 	return ;
 }
 
@@ -58,12 +58,7 @@ DiamondTrap	&DiamondTrap::operator=(const DiamondTrap &st) {
 	return (*this);
 }
 
-void	DiamondTrap::attack(const std::string &target) const {
+void	DiamondTrap::whoAmI(void) const {
 
-	std::cout << this->_name << " hit with a stick " << target << ", causing " << this->_attacktDamage << " points of damage" << std::endl;
-}
-
-void	DiamondTrap::guardGate(void) const {
-
-	std::cout << this->_name << " entered in Gate keeper mode" << std::endl;
+	std::cout << "My name is " << this->_name << ", my ClapTrap name is " << this->ClapTrap::_name << std::endl;
 }

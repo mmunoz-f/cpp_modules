@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Zombie.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:33:20 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 16:33:36 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/07 10:33:33 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@
 
 Zombie::Zombie(void) : _name("zombie") {
 
-	this->announce();
+	std::cout << this->_name << " raised in search of delicious brains." << std::endl;
 	return ;
 }
 
 Zombie::Zombie(std::string name) : _name(name) {
 
-	this->announce();
+	std::cout << this->_name << " raised in search of delicious brains." << std::endl;
 	return ;
 }
 

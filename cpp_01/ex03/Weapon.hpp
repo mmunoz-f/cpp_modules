@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.hpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 19:54:51 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/01 13:20:21 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/07 11:28:22 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ class	Weapon {
 		Weapon(std::string type);
 		~Weapon(void);
 
-		std::string	getType(void) const;
-		void		setType(std::string type);
+		const std::string	&getType(void) const;
+		void				setType(std::string type);
 };
 
 #endif

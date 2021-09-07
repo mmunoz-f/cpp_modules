@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:32:33 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 16:39:35 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/07 10:34:58 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,14 @@ int	main(void) {
 	Zombie	*manuel;
 	Zombie	*sebastian;
 
+	juan.announce();
 	heapzombie = new Zombie();
 	delete heapzombie;
 	manuel = new Zombie("manuel");
+	manuel->announce();
 	randomChump("javier");
 	sebastian = newZombie("sebastian");
+	sebastian->announce();
 
 	delete manuel;
 	delete sebastian;

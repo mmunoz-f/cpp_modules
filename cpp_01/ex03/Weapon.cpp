@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Weapon.cpp                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 19:53:32 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 20:04:09 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/07 11:27:50 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Weapon::~Weapon(void) {
 	return ;
 }
 
-std::string	Weapon::getType(void) const {
+const std::string	&Weapon::getType(void) const {
 
 	return (this->_type);
 }

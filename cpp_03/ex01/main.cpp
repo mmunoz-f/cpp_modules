@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 14:13:25 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/04 17:30:00 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/06 11:20:51 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ int	main(void) {
 	ScavTrap	tom("tom");
 
 
+	jerry.attack(tom.getName());
 	tom.attack(jerry.getName());
 	jerry.takeDamage(tom.getAttackDamage());
 	jerry.beRepaired(10);

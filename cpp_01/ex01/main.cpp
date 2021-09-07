@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 13:32:33 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/08/31 17:09:13 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/07 10:38:39 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@ int	main(void) {
 	Zombie	*juanes;
 
 	juanes = zombieHorde(20, "juan");
+
+	for (int i = 0; i < 20; i++)
+		juanes[i].announce();
 
 	delete [] juanes;
 	return (0);

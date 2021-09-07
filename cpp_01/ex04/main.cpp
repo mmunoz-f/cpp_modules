@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
+/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/08/31 21:08:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/01 19:17:50 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/07 11:30:29 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	replace(std::ifstream &ifs, std::ofstream &ofs, std::string str1, std::strin
 	size_t			last_pos;
 
 	if (str2.empty() || str1.empty()) {
-		std::cout << "Error\nNot valid argumnets" << std::endl;
+		std::cout << "Error\nNot valid arguments" << std::endl;
 		return (1);
 	}
 

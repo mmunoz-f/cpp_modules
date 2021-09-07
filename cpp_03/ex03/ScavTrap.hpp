@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 15:54:09 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/04 17:10:12 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/06 12:44:40 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "ClapTrap.hpp"
 
-class	ScavTrap : public ClapTrap {
+class	ScavTrap : virtual public ClapTrap {
 
 	public:
 
@@ -26,7 +26,7 @@ class	ScavTrap : public ClapTrap {
 
 		ScavTrap	&operator=(const ScavTrap &st);
 
-		void	attack(const std::string &target) const;
+		virtual void	attack(const std::string &target) const;
 		void	guardGate(void) const;
 };
 

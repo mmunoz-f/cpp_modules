@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/04 14:13:25 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/04 17:31:20 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/06 11:21:42 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	main(void) {
 	FragTrap	spike("spike");
 
 
+	jerry.attack(tom.getName());
 	tom.attack(jerry.getName());
 	jerry.takeDamage(tom.getAttackDamage());
 	spike.attack(tom.getName());
