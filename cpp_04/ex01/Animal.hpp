@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 13:33:59 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/09 17:45:22 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/09 19:19:31 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 # define __ANIMAL_H__
 
 # include <string>
+# include "Brain.hpp"
 
 class	Animal {
 
 	protected:
 
 		std::string	_type;
+		Brain		*_brain;
 
 	public:
 
@@ -31,6 +33,7 @@ class	Animal {
 		Animal	&operator=(const Animal &animal);
 
 		const std::string	getType(void) const;
+		Brain			*getBrain(void) const;
 
 		virtual void	makeSound(void) const;
 };
