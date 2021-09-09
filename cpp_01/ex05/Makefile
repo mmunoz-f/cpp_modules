@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
+#    By: miguel <miguel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/09/01 18:48:17 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/09/09 20:07:11 by miguel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,6 @@ NAME = karem2.0
 
 SRCS = main.cpp Karen.cpp
 OBJS = $(SRCS:.cpp=.o)
-
-.o:
 
 all: $(NAME)
 

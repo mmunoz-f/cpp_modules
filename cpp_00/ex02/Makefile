@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
+#    By: miguel <miguel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/08/29 23:02:33 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/09/09 20:06:16 by miguel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,6 @@ NAME = account_test
 
 SRCS = tests.cpp Account.cpp
 OBJS = $(SRCS:.cpp=.o)
-
-.o:
 
 all: $(NAME)
 

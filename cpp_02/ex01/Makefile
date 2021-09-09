@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
+#    By: miguel <miguel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/09/02 14:03:22 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/09/09 20:07:37 by miguel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,8 +20,6 @@ NAME = fixed
 
 SRCS = main.cpp Fixed.cpp
 OBJS = $(SRCS:.cpp=.o)
-
-.o:
 
 all: $(NAME)
 
