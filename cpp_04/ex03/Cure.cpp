@@ -1,46 +1,46 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   AMateria.cpp                                       :+:      :+:    :+:   */
+/*   Cure.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/09 20:10:34 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/11 23:47:14 by miguel           ###   ########.fr       */
+/*   Created: 2021/09/10 12:43:53 by miguel            #+#    #+#             */
+/*   Updated: 2021/09/11 23:50:16 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
-#include "AMateria.hpp"
+#include "Cure.hpp"
 
-AMateria::AMateria(const std::string &type) : _type(type) {
-
-	return ;
-}
-
-AMateria::AMateria(const AMateria &materia) {
-
-	this->_type = materia.getType();
-	return ;
-}
-
-AMateria::~AMateria(void) {
+Cure::Cure(void) : AMateria("cure") {
 
 	return ;
 }
 
-AMateria	&AMateria::operator=(const AMateria &materia) {
+Cure::Cure(const Cure &cure) : AMateria("cure") {
 
-	this->_type = materia.getType();
+	(void)cure;
+	return ;
+}
+
+Cure::~Cure(void) {
+
+	return ;
+}
+
+Cure	&Cure::operator=(const Cure &cure) {
+
+	(void)cure;
 	return (*this);
 }
 
-const std::string &AMateria::getType(void) const {
+AMateria	*Cure::clone(void) const {
 
-	return (this->_type);
+	return (new Cure(*this));
 }
 
-void	AMateria::use(ICharacter &target) {
+void	Cure::use(ICharacter &target) {
 
-	std::cout << "* uses " << this->_type << " against *" << target.getName() << std::endl;
+	std::cout << "* heals " << target.getName() << "’s wounds *" << std::endl;
 }

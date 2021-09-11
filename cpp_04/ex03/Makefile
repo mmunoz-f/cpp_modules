@@ -6,7 +6,7 @@
 #    By: miguel <miguel@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/09/09 20:09:05 by miguel           ###   ########.fr        #
+#    Updated: 2021/09/11 20:51:20 by miguel           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,9 +16,9 @@ CXXFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 TIME = $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
 
-NAME = Animals
+NAME = magic
 
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp Brain.cpp
+SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp MateriaSource.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
