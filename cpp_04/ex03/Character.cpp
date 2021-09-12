@@ -6,10 +6,11 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/10 12:49:15 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/11 23:25:56 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/12 11:55:53 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Character.hpp"
 #include "AMateria.hpp"
 
@@ -75,7 +76,8 @@ void	Character::unequip(int idx) {
 
 void	Character::use(int idx, ICharacter &target) {
 
-	if (idx >= CHARACTER_INVENTORY_CAP)
+	if (idx >= CHARACTER_INVENTORY_CAP || !this->_inventory[idx])
 		return ;
+	//std::cout << "<" << this->_name << "> ";
 	this->_inventory[idx]->use(target);
 }

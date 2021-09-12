@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 13:41:54 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/09 17:45:37 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/12 11:57:13 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,5 +54,4 @@ const std::string	Animal::getType(void) const {
 
 void	Animal::makeSound(void) const {
 
-	std::cout << "..." << std::endl;
 }

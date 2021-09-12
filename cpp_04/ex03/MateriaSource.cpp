@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/11 17:33:05 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/11 20:55:57 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/12 11:41:35 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	MateriaSource::learnMateria(AMateria *materia) {
 
 	for (int i = 0; i < MATERIASOURCE_CAP; i++) {
 		if (!this->_mem[i]) {
-			this->_mem[i] = materia->clone();
+			this->_mem[i] = materia;
 			break ;
  		}
 	}
