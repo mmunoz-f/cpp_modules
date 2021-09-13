@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 16:07:12 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/09 19:51:28 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/13 12:09:16 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ Cat::Cat(const Cat &cat) {
 
 Cat::~Cat(void) {
 
+	delete this->_brain;
 	std::cout << this->_type << " got tired of you" << std::endl;
 	return ;
 }
@@ -39,6 +40,11 @@ Cat	&Cat::operator=(const Cat &cat) {
 	this->_type = cat.getType();
 	this->_brain = new Brain(*cat.getBrain());
 	return (*this);
+}
+
+Brain	*Cat::getBrain(void) const {
+
+	return (this->_brain);
 }
 
 void	Cat::makeSound(void) const {

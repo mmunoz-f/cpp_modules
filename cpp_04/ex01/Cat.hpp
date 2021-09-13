@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 13:51:27 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/09 16:22:02 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/13 12:08:17 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 class	Cat : public Animal {
 
+	Brain	*_brain;
+
 	public:
 
 		Cat(void);
@@ -26,6 +28,7 @@ class	Cat : public Animal {
 
 		Cat	&operator=(const Cat &animal);
 
+		Brain	*getBrain(void) const;
 		void	makeSound(void) const;
 };
 

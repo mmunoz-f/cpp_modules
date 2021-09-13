@@ -6,7 +6,7 @@
 /*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 17:19:35 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/09 19:46:38 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/13 12:04:08 by miguel           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ Brain::Brain(void) {
 
 Brain::Brain(Brain &brain) {
 
+	std::cout << "Brain set up completed" << std::endl;
 	copyIdeas(this->_ideas, brain.getIdeas());
 	return ;
 }
