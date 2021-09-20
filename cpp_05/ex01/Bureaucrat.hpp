@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 12:46:13 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/20 15:49:47 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/20 16:24:18 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@
 # include <string>
 # include <exception>
 # include <ostream>
+
+class	Form;
 
 class Bureaucrat {
 
@@ -46,6 +48,7 @@ class Bureaucrat {
 
 		void	promote(const int n);
 		void	demote(const int n);
+		void	signForm(Form &form) const;
 };
 
 std::ostream	&operator<<(std::ostream &o, const Bureaucrat &bureaucrat);

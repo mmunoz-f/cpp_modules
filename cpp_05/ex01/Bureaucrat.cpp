@@ -6,11 +6,13 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 12:45:57 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/20 19:27:13 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/20 19:27:21 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <iostream>
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 Bureaucrat::Bureaucrat(void) : _name("Bureaucrat"), _grade(150) {
 
@@ -60,6 +62,17 @@ void	Bureaucrat::demote(const int n) {
 	this->_grade += n;
 }
 
+void	Bureaucrat::signForm(Form &form) const {
+
+	try {
+		form.beSigned(*this);
+		std::cout << *this << " signs " << form << std::endl;
+	}
+	catch (std::exception &e) {
+		std::cout << *this << " cannot sign " << form << " because " << e.what() << std::endl;
+	}
+}
+
 const std::string	&Bureaucrat::getName(void) const {
 
 	return (this->_name);
@@ -70,12 +83,12 @@ int	Bureaucrat::getGrade(void) const {
 	return (this->_grade);
 }
 
-const  char *Bureaucrat::GradeTooHighException::what () const throw () {
+const char	*Bureaucrat::GradeTooHighException::what () const throw () {
 
 	return ("grade too high");
 }
 
-const  char *Bureaucrat::GradeTooLowException::what () const throw () {
+const char	*Bureaucrat::GradeTooLowException::what () const throw () {
 
 	return ("grade too low");
 }
