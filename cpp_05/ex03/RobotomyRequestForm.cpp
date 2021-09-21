@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 23:25:34 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/21 14:53:33 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:23:38 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,4 +52,9 @@ void	RobotomyRequestForm::execute(const Bureaucrat &executor) const {
 		std::cout << this->getTarget() << " has been robotized successfully" << std::endl;
 	else
 		std::cout << this->getTarget() << " robotization failed" <<std::endl;
+}
+
+Form	*newRobotomyRequest(const std::string &target) {
+
+	return (new RobotomyRequestForm(target));
 }

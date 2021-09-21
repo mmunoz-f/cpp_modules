@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 19:39:39 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/21 14:54:21 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 16:25:31 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,4 +78,9 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 					;%@@@@%::;.\n\
 				;%@@@@%%:;;;.\n\
 			...;%@@@@@%%:;;;;,.." << std::endl;
+}
+
+Form	*newShrubberyCreation(const std::string &target) {
+
+	return (new ShrubberyCreationForm(target));
 }
