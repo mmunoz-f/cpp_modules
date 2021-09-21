@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:37:38 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/20 22:58:34 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:36:40 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class Form {
 		Form(void);
 		Form(const std::string &name, const int requiredGrade, const int requiredExecGrade);
 		Form(const Form &form);
-		~Form(void);
+		virtual	~Form(void);
 
 		Form	&operator=(const Form &form);
 

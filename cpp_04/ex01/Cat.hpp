@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Cat.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 13:51:27 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/13 12:08:17 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/21 12:51:39 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	Cat : public Animal {
 
 		Cat(void);
 		Cat(const Cat &animal);
-		~Cat(void);
+		virtual	~Cat(void);
 
 		Cat	&operator=(const Cat &animal);
 

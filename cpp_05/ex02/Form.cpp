@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:50:51 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/20 23:48:10 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:56:25 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,6 @@ void	Form::validExec(const Bureaucrat &executor) const {
 		throw NotSignedException();
 	if (executor.getGrade() > this->_requiredExecGrade)
 		throw GradeTooLowException();
-	std::cout << executor << " executes " << *this << std::endl;
 }
 
 const char	*Form::GradeTooHighException::what () const throw() {

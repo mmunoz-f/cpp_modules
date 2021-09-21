@@ -6,18 +6,18 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:50:51 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/20 23:16:26 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:14:04 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "Form.hpp"
 
-Form::Form(void) : _name("Form"), _requiredGrade(150), _signed(false) {
+Form::Form(void) : _name("Form"), _requiredGrade(150), _requiredExecGrade(150), _signed(false) {
 
 	return ;
 }
 
-Form::Form(const std::string &name, const int requiredGrade) : _name(name), _requiredGrade(requiredGrade), _signed(false) {
+Form::Form(const std::string &name, const int requiredGrade) : _name(name), _requiredGrade(requiredGrade), _requiredExecGrade(150), _signed(false) {
 
 	if (requiredGrade < 1)
 		throw GradeTooHighException();
@@ -26,7 +26,7 @@ Form::Form(const std::string &name, const int requiredGrade) : _name(name), _req
 	return ;
 }
 
-Form::Form(const Form &form) : _name(form.getName()), _requiredGrade(form.getRequiredGrade()), _signed(form.getSigned()) {
+Form::Form(const Form &form) : _name(form.getName()), _requiredGrade(form.getRequiredGrade()), _requiredExecGrade(form.getRequiredExecGrade()), _signed(form.getSigned()) {
 
 	return ;
 }
@@ -50,6 +50,11 @@ const std::string	&Form::getName(void) const {
 int	Form::getRequiredGrade(void) const {
 
 	return (this->_requiredGrade);
+}
+
+int Form::getRequiredExecGrade(void) const {
+
+	return (this->_requiredExecGrade);
 }
 
 bool	Form::getSigned(void) const {

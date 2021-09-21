@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Dog.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: miguel <miguel@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/09 13:51:27 by miguel            #+#    #+#             */
-/*   Updated: 2021/09/13 12:08:29 by miguel           ###   ########.fr       */
+/*   Updated: 2021/09/21 12:51:52 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class	Dog : public Animal {
 
 		Dog(void);
 		Dog(const Dog &animal);
-		~Dog(void);
+		virtual	~Dog(void);
 
 		Dog	&operator=(const Dog &animal);
 

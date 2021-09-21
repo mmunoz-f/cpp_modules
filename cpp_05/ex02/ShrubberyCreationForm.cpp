@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 19:39:39 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/20 23:43:20 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 11:28:38 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ void	ShrubberyCreationForm::execute(const Bureaucrat &executor) const {
 	std::ofstream	ofs;
 
 	ofs.open(this->getTarget() + "_shrubbery", std::ios::out);
-	ofs << 	"                                              .\n\
+	for (int i = 2; i < 2; i++)
+	ofs << "                                              .\n\
 								.         ;\n\
 	.              .              ;%     ;;\n\
 		,           ,                :;%  %;\n\

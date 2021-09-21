@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 15:37:38 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/20 19:14:57 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 11:35:19 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,9 @@
 class Form {
 
 	const std::string	_name;
-	const int		_requiredGrade;
-	bool			_signed;
+	const int			_requiredGrade;
+	const int			_requiredExecGrade;
+	bool				_signed;
 
 	class GradeTooHighException : public std::exception {
 
@@ -44,7 +45,8 @@ class Form {
 		Form	&operator=(const Form &form);
 
 		const std::string	&getName(void) const;
-		int			getRequiredGrade(void) const;
+		int					getRequiredGrade(void) const;
+		int					getRequiredExecGrade(void) const;
 		bool				getSigned(void) const;
 
 		void	beSigned(const Bureaucrat &bureaucrat);

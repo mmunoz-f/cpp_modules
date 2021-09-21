@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 12:45:57 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/20 23:45:36 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/21 12:24:15 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,9 @@ void	Bureaucrat::signForm(Form &form) const {
 void	Bureaucrat::executeForm(const Form &form) const {
 
 	try {
+
 		form.execute(*this);
+		std::cout << *this << " executes " << form << std::endl;
 	}
 	catch (std::exception &e) {
 
