@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 13:27:24 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/21 18:02:20 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/22 19:06:36 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Intern::Intern(void) {
 
 Intern::Intern(const Intern &intern) {
 
-	(void)intern;
+	*this = intern;
 	return ;
 }
 
@@ -34,7 +34,7 @@ Intern::~Intern(void) {
 
 Intern	&Intern::operator=(const Intern &intern) {
 
-	(void)intern;
+	if (this != &intern) {}
 	return (*this);
 }
 
