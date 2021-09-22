@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/20 12:45:30 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/21 17:59:04 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/22 16:34:28 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ int	main (void) {
 
 	javier.signForm(*form);
 	javier.executeForm(*form);
+
+	delete form;
 
 	return (0);
 }

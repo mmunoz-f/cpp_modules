@@ -6,7 +6,7 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/09/21 20:11:16 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/09/22 16:35:26 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ M =
 
 NAME = convert
 
-SRCS = main.cpp
+SRCS = main.cpp Conversion.cpp literalValue.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)

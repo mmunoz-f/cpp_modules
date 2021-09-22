@@ -6,51 +6,16 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/21 20:15:36 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/21 21:59:10 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/22 17:14:29 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Conversion.hpp"
 
-bool	validStr(const std::string str, const char *set) {
+const char	*Conversion::NotLiteralException::what() const throw () {
 
-	size_t	i = 0;
-	size_t	strLenth = str.length();
-
-	while (i < strLenth) {
-		if (!strchr(set, str[i]))
-			return (false);
-		i++;
-	}
-	return (true);
-}
-
-bool	strJustOne(const std::string str, char c) {
-
-}
-
-bool	strIsInt(std::string str) {
-
-	if (!validStr(str, "1234567890-"))
-		return (false);
-	if ()
-	return (true);
-}
-
-bool	strIsFloat(std::string str) {
-
-	size_t	fpos;
-
-	if (str == "-inff" || str == "+inff" || str == "nanf")
-		return (true);
-	if (!validStr(str, "1234567890-.f"))
-		return (false);
-	if (!strJustOne(str, 'f'))
-		return (false);
-	if (!strJustOne(str, '.'))
-		return (false);
-	return (true);
+	return ("Not a literal value");
 }
 
 Conversion::Conversion(void) : exceptions() {
@@ -58,28 +23,18 @@ Conversion::Conversion(void) : exceptions() {
 	return ;
 }
 
-Conversion::Conversion(const std::string &original) {
+Conversion::Conversion(const std::string &str) {
 
-	int	i = 0;
-
-	if (original.length() < 2) {
-		this->c = original[0];
-		this->charConv();
-	}
-	else if (strisint(original)) {
-		this->i = std::stoi(original);
-		this->intConv();
-	}
-	else if (strisfloat(original)) {
-		this->f = std::stof(original);
-		this->floatConv();
-	}
-	else if (strisdouble(original)) {
-		this->d = std::stod(original);
-		this->floatConv();
-	}
+	if (str.length() == 1)
+		this->charConv(str);
+	else if (strIsInt(str))
+		this->intConv(str);
+	else if (strIsFloat(str))
+		this->floatConv(str);
+	else if (strIsDouble(str))
+		this->doubleConv(str);
 	else
-		std::cout << "Not a literal value" << std::endl;
+		throw NotLiteralException();
 }
 
 Conversion::Conversion(const Conversion &src) : c(src.c), i(src.i), f(src.f), d(src.d) {
@@ -105,6 +60,88 @@ Conversion	&Conversion::operator=(const Conversion &src) {
 	this->f = src.f;
 	this->d = src.d;
 	return (*this);
+}
+
+void	Conversion::charConv(const std::string &str) {
+
+	this->c = str[0];
+	this->i = static_cast<int>(this->c);
+	this->f = static_cast<float>(this->i);
+	this->d = static_cast<double>(this->i);
+}
+
+void	Conversion::intConv(const std::string &str) {
+
+		this->i = std::stoi(str);
+		this->f = static_cast<float>(this->i);
+		this->d = static_cast<double>(this->i);
+		this->c = static_cast<char>(this->i);
+
+	if (this->c < 32 || this->c > 126)
+		this->exceptions[0] = "Non displayable";
+}
+
+bool	Conversion::handleException(const std::string &str) {
+
+	const std::string exceptions[] = {"-inf", "+inf", "nan"};
+	int i;
+
+	for (i = 0; i < 3; i++) {
+		if (str.find(exceptions[i]) != std::string::npos)
+			break ;
+	}
+
+	switch (i) {
+		case 0:
+			this->exceptions[0] = "impossible";
+			this->exceptions[1] = "impossible";
+			this->exceptions[2] = "-inff";
+			this->exceptions[3] = "-inf";
+			break ;
+		case 1:
+			this->exceptions[0] = "impossible";
+			this->exceptions[1] = "impossible";
+			this->exceptions[2] = "+inff";
+			this->exceptions[3] = "+inf";
+			break ;
+		case 2:
+			this->exceptions[0] = "impossible";
+			this->exceptions[1] = "impossible";
+			this->exceptions[2] = "nanf";
+			this->exceptions[3] = "nan";
+			break ;
+		default:
+			return (false);
+	}
+	return (true);
+}
+
+void	Conversion::floatConv(const std::string &str) {
+
+	if (this->handleException(str))
+		return ;
+
+		this->f = std::stof(str);
+		this->d = static_cast<double>(this->f);
+		this->i = static_cast<int>(this->f);
+		this->c = static_cast<char>(this->f);
+
+	if (this->c < 32 || this->c > 126)
+		this->exceptions[0] = "Non displayable";
+}
+
+void	Conversion::doubleConv(const std::string &str) {
+
+	if (this->handleException(str))
+		return ;
+
+		this->d = std::stod(str);
+		this->f = static_cast<float>(this->d);
+		this->i = static_cast<int>(this->d);
+		this->c = static_cast<char>(this->d);
+
+	if (this->c < 32 || this->c > 126)
+		this->exceptions[0] = "Non displayable";
 }
 
 std::ostream	&operator<<(std::ostream &o, const Conversion &src) {
