@@ -6,37 +6,43 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 22:20:12 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/23 23:41:10 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/23 23:53:07 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <string>
 #include "whatever.hpp"
 #include "Example.hpp"
 
 int	main(void) {
 
-	int		a = 1;
-	int		b = 2;
-	float	c = 1.2;
-	float	d = 2.3;
+	int a = 2;
+	int b = 3;
+	::swap( a, b );
+	std::cout << "a = " << a << ", b = " << b << std::endl;
+	std::cout << "min( a, b ) = " << ::min( a, b ) << std::endl;
+	std::cout << "max( a, b ) = " << ::max( a, b ) << std::endl;
 
+	std::string c = "chaine1";
+	std::string d = "chaine2";
+	::swap(c, d);
+	std::cout << "c = " << c << ", d = " << d << std::endl;
+	std::cout << "min( c, d ) = " << ::min( c, d ) << std::endl;
+	std::cout << "max( c, d ) = " << ::max( c, d ) << std::endl;
 
-	std::cout << max<int>(a, b) << std::endl;
-	std::cout << min<int>(a, b) << std::endl;
-	std::cout << max<float>(c, d) << std::endl;
-	std::cout << min<float>(c, d) << std::endl;
+	float	e = 1.2;
+	float	f = 2.3;
+	::swap<float>(e, f);
+	std::cout << ::max<float>(e, f) << std::endl;
+	std::cout << ::min<float>(e, f) << std::endl;
+	std::cout << c << " " << d << std::endl;
 
-	swap<int>(a, b);
-	swap<float>(c, d);
-	std::cout << a << " " << b << " " << c << " " << d << std::endl;
-
-	Example	e(1);
-	Example	f(2);
-
-	std::cout << max<Example>(e, f) << std::endl;
-	std::cout << min<Example>(e, f) << std::endl;
-
-	swap<Example>(e, f);
+	Example	g(1);
+	Example	h(2);
+	::swap<Example>(g, h);
+	std::cout << ::max<Example>(g, h) << std::endl;
+	std::cout << ::min<Example>(g, h) << std::endl;
 	std::cout << e << " " << f <<std::endl;
 }
+
