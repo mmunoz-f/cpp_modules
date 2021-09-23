@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 22:20:12 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/23 23:53:07 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/23 23:57:43 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,15 @@ int	main(void) {
 	float	e = 1.2;
 	float	f = 2.3;
 	::swap<float>(e, f);
-	std::cout << ::max<float>(e, f) << std::endl;
-	std::cout << ::min<float>(e, f) << std::endl;
-	std::cout << c << " " << d << std::endl;
+	std::cout << "e = " << e << ", f = " << f << std::endl;
+	std::cout << "min( e, f ) = " << ::min( e, f ) << std::endl;
+	std::cout << "max( e, f ) = " << ::max( e, f ) << std::endl;
 
 	Example	g(1);
 	Example	h(2);
 	::swap<Example>(g, h);
-	std::cout << ::max<Example>(g, h) << std::endl;
-	std::cout << ::min<Example>(g, h) << std::endl;
-	std::cout << e << " " << f <<std::endl;
+	std::cout << "g = " << g << ", h = " << h << std::endl;
+	std::cout << "min( g, h ) = " << ::min( g, h ) << std::endl;
+	std::cout << "max( g, h ) = " << ::max( g, h ) << std::endl;
 }
 
