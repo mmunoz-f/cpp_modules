@@ -1,26 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   iter.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 12:45:30 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/24 04:50:31 by mmunoz-f         ###   ########.fr       */
+/*   Created: 2021/09/23 23:59:32 by mmunoz-f          #+#    #+#             */
+/*   Updated: 2021/09/24 05:22:31 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#ifndef __ITER_H__
+# define __ITER_H__
 
-int	main (void) {
+# include <iostream>
 
-	Bureaucrat	javier("Javier", 20);
-	Form		matricula("matriculacion", 30);
-	Form		expulsion("expulsion", 10);
+template<typename T>
+void	iter(T ptr[], size_t length, void (*f)(T&)) {
 
-	javier.signForm(matricula);
-	javier.signForm(expulsion);
-	return (0);
+	for (size_t i = 0; i < length; i++)
+		f(ptr[i]);
 }
+
+#endif

@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   add.hpp                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 12:45:30 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/24 04:50:31 by mmunoz-f         ###   ########.fr       */
+/*   Created: 2021/09/24 05:04:22 by mmunoz-f          #+#    #+#             */
+/*   Updated: 2021/09/24 05:22:03 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#ifndef __ADD_H__
+# define __ADD_H__
 
-int	main (void) {
-
-	Bureaucrat	javier("Javier", 20);
-	Form		matricula("matriculacion", 30);
-	Form		expulsion("expulsion", 10);
-
-	javier.signForm(matricula);
-	javier.signForm(expulsion);
-	return (0);
+template<typename T>
+void	add(T &o) {
+	o++;
 }
+
+#endif

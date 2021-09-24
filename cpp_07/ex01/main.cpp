@@ -5,22 +5,31 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/20 12:45:30 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/24 04:50:31 by mmunoz-f         ###   ########.fr       */
+/*   Created: 2021/09/23 23:59:10 by mmunoz-f          #+#    #+#             */
+/*   Updated: 2021/09/24 05:21:05 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <iostream>
-#include "Bureaucrat.hpp"
-#include "Form.hpp"
+#include "iter.hpp"
+#include "Example.hpp"
+#include "add.hpp"
 
-int	main (void) {
+int	main(void) {
 
-	Bureaucrat	javier("Javier", 20);
-	Form		matricula("matriculacion", 30);
-	Form		expulsion("expulsion", 10);
+	char	str[] = "hola";
+	int		numbers[] = {1, 2, 3};
+	Example	examples[] = {Example(1), Example(2), Example(3)};
 
-	javier.signForm(matricula);
-	javier.signForm(expulsion);
+	iter(str, strlen(str), add);
+	iter(numbers, 3, add);
+	iter(examples, 3, add);
+
+	std::cout << str << std::endl;
+	for (int i = 0; i < 3; i++)
+		std::cout << numbers[i] << " ";
+	std::cout << std::endl;
+	for (int i = 0; i < 3; i++)
+		std::cout << examples[i] << " ";
+	std::cout << std::endl;
 	return (0);
 }
