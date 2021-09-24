@@ -5,31 +5,49 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/23 23:59:10 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/24 05:44:44 by mmunoz-f         ###   ########.fr       */
+/*   Created: 2021/09/24 06:17:17 by mmunoz-f          #+#    #+#             */
+/*   Updated: 2021/09/24 06:48:13 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "iter.hpp"
+#include <iostream>
+#include "Array.hpp"
 #include "Example.hpp"
-#include "add.hpp"
 
 int	main(void) {
 
-	char	str[] = "hola";
-	int		numbers[] = {1, 2, 3};
-	Example	examples[] = {Example(1), Example(2), Example(3)};
+	Array<int>	a;
+	Array<int>	b(3);
 
-	iter(str, strlen(str), add);
-	iter(numbers, 3, add);
-	iter(examples, 3, add);
+	for (unsigned int i = 0; i < b.size(); i++)
+		std::cout << b[i] << " ";
+	std::cout << std::endl;
 
-	std::cout << str << std::endl;
-	for (int i = 0; i < 3; i++)
-		std::cout << numbers[i] << " ";
+	b[0] = 0;
+	b[1] = 1;
+	b[2] = 2;
+	for (unsigned int i = 0; i < b.size(); i++)
+		std::cout << b[i] << " ";
 	std::cout << std::endl;
-	for (int i = 0; i < 3; i++)
-		std::cout << examples[i] << " ";
+
+	try {
+		b[4] = 4;
+	}
+	catch (std::out_of_range &e) {
+		std::cout << e.what() << std::endl;
+	}
+
+	Array<Example> c(3);
+	for (unsigned int i = 0; i < c.size(); i++)
+		std::cout << c[i] << " ";
 	std::cout << std::endl;
+
+	c[0] = 3;
+	c[1] = 4;
+	c[2] = 5;
+	for (unsigned int i = 0; i < c.size(); i++)
+		std::cout << c[i] << " ";
+	std::cout << std::endl;
+
 	return (0);
 }
