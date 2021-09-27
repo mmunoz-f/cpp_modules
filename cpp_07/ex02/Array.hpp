@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 05:24:31 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/24 06:41:46 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/27 20:58:02 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ class Array {
 			*this = src;
 		}
 		~Array(void) {
-			delete [] this->_array;
+			if (this->_array)
+				delete [] this->_array;
 		}
 
 		Array	&operator=(const Array &src) {
@@ -41,7 +42,14 @@ class Array {
 			}
 			return (*this);
 		}
-		T		&operator[](const unsigned int n) {
+
+		T	&operator[](const unsigned int n) {
+			if (n >= this->_size)
+				throw std::out_of_range("out of limits");
+			return (this->_array[n]);
+		}
+
+		const T	&operator[](const unsigned int n) const {
 			if (n >= this->_size)
 				throw std::out_of_range("out of limits");
 			return (this->_array[n]);

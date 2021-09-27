@@ -6,7 +6,7 @@
 #    By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/08/25 20:55:45 by mmunoz-f          #+#    #+#              #
-#    Updated: 2021/09/27 18:41:18 by mmunoz-f         ###   ########.fr        #
+#    Updated: 2021/09/27 20:10:00 by mmunoz-f         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,7 +16,7 @@ CXXFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 TIME = $(shell date +'%d/%m/%Y %H:%M:%S')
 M =
 
-NAME = easyfind
+NAME = MutantStack
 
 SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)

@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 06:17:17 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/24 06:48:13 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/27 20:59:31 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,12 @@ int	main(void) {
 	c[2] = 5;
 	for (unsigned int i = 0; i < c.size(); i++)
 		std::cout << c[i] << " ";
+	std::cout << std::endl;
+
+	const Array<int> d(3);
+
+	for (unsigned int i = 0; i < c.size(); i++)
+		std::cout << d[i] << " ";
 	std::cout << std::endl;
 
 	return (0);
