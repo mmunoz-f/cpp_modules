@@ -6,19 +6,19 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 15:36:30 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/26 22:38:39 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/27 16:29:44 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdexcept>
 #include "Span.hpp"
 
-Span::Span(void) : _size(0) {
+Span::Span(void) : _size(0), _values() {
 
 	return ;
 }
 
-Span::Span(const unsigned int N) : _size(N) {
+Span::Span(const unsigned int N) : _size(N), _values() {
 
 	return ;
 }
@@ -75,7 +75,9 @@ void	Span::addNumber(const int n) {
 
 void	Span::addNumber(std::vector<int>::iterator begin, std::vector<int>::iterator end) {
 
-	std::copy_if(begin, end, std::back_inserter(this->_values), (this->_values.size() < this->_size ? 1 : 0));
+	if (this->_size < this->_values.size() + std::distance(begin, end))
+		throw AlreadyFilledException();
+	std::copy(begin, end, std::back_inserter(this->_values));
 }
 
 int	Span::min(void) const {

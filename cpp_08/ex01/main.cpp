@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 17:32:56 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/26 22:06:17 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/27 16:33:51 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	main(void) {
 
 
 	Span	span(10000);
-	std::vector<int>	v(10000);
+	std::vector<int>	v;
 	for (unsigned int i = 0; i < 10000; i++)
 		v.push_back(rand());
 
