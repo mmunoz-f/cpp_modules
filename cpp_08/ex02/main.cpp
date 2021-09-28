@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 16:38:05 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/27 20:15:12 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/28 16:14:45 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 #include "mutantstack.hpp"
 
 int	main(void) {
+
+	std::cout << "------- [ MUTANTSTACK ] -------" << std::endl;
 
 	MutantStack<int> mstack;
 
@@ -42,5 +44,35 @@ int	main(void) {
 		++it;
 	}
 	std::stack<int> s(mstack);
+
+	std::cout << "------- [ LISTS ] -------" << std::endl;
+
+	std::list<int> lst;
+
+	lst.push_back(5);
+	lst.push_back(17);
+
+	std::cout << lst.back() << std::endl;
+	lst.pop_back();
+	std::cout << lst.size() << std::endl;
+
+	lst.push_back(3);
+	lst.push_back(5);
+	lst.push_back(737);
+	//[...]
+	lst.push_back(0);
+	std::list<int>::iterator it2 = lst.begin();
+	std::list<int>::iterator ite2 = lst.end();
+
+	++it2;
+	--it2;
+
+	while (it2 != ite2)
+	{
+		std::cout << *it2 << std::endl;
+		++it2;
+	}
+	std::list<int> p(lst);
+
 	return (0);
 }
