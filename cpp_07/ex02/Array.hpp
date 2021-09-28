@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 05:24:31 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/27 20:58:02 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/28 16:32:25 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ class Array {
 		Array(unsigned int n) : _size(n) {
 			this->_array = new T[n];
 		}
-		Array(const Array &src) {
+		Array(const Array &src) : _array() {
 			*this = src;
 		}
 		~Array(void) {
@@ -36,6 +36,9 @@ class Array {
 		}
 
 		Array	&operator=(const Array &src) {
+			if (this->_array)
+				delete [] this->_array;
+			this->_array = new T[src.size()];
 			this->_size = src.size();
 			for(unsigned int i = 0; i < this->_size; i++) {
 				this->_array[i] = src[i];
