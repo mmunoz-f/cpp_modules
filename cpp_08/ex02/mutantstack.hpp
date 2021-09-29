@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/27 16:38:56 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/27 20:10:19 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/29 16:34:01 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,17 @@ template <typename T>
 class	MutantStack : public std::stack<T> {
 
 	public:
+
+		MutantStack(void) : std::stack<T>() {}
+		MutantStack(const MutantStack &src) {
+			*this = src;
+		}
+		virtual	~MutantStack(void) {}
+
+		MutantStack	&operator=(const MutantStack &src) {
+			*this = src;
+			return (*this);
+		}
 
 		typedef typename	std::stack<T>::container_type::iterator	iterator;
 		typedef typename	std::stack<T>::container_type::const_iterator const_iterator;

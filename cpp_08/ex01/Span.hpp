@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 15:23:42 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/27 16:12:39 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/29 16:28:35 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ class Span {
 
 		Span(const unsigned int N);
 		Span(const Span &src);
-		~Span(void);
+		virtual ~Span(void);
 
 		Span		&operator=(const Span &src);
 		const int	&operator[](const unsigned int n) const;
