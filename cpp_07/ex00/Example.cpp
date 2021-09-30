@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/23 22:29:07 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/23 23:38:35 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/30 17:25:34 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ Example::~Example(void) {
 
 Example	&Example::operator=(const Example &src) {
 
+	if (this == &src)
+		return (*this);
 	this->n = src.n;
 	return (*this);
 }

@@ -6,7 +6,7 @@
 /*   By: mmunoz-f <mmunoz-f@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/24 05:24:31 by mmunoz-f          #+#    #+#             */
-/*   Updated: 2021/09/28 16:32:25 by mmunoz-f         ###   ########.fr       */
+/*   Updated: 2021/09/30 17:24:49 by mmunoz-f         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,8 @@ class Array {
 		}
 
 		Array	&operator=(const Array &src) {
+			if (this == &src)
+				return (*this);
 			if (this->_array)
 				delete [] this->_array;
 			this->_array = new T[src.size()];
