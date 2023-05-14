@@ -8,20 +8,7 @@ int main(int argc, char **argv)
 		std::cout << "Error: could not open file." << std::endl;
 	}
 
-	// Read Data
-	try
-	{
-		DataReader dataReader;
-
-		while (1)
-		{
-			dataReader.ReadLine();
-		}
-	}
-	catch(std::exception &e)
-	{
-		std::cout << "Error: " << e.what() << std::endl;
-	}
+	BitcoinDataset BitcoinDataset();
 
 	return 0;
 }
