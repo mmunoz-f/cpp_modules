@@ -1,9 +1,10 @@
 #include <string>
+#include "FormattedDate.hpp"
 
 class BitcoinDataValue
 {
-	std::string date;
-	float value;
+	FormattedDate m_date;
+	float m_value;
 
 	BitcoinDataValue();
 
@@ -18,7 +19,7 @@ public:
 	void SetValue(const float &value);
 	void SetValue(const std::string &value);
 
-	std::string GetDate() const;
+	FormattedDate GetDate() const;
 	float GetValue() const;
 
 	static BitcoinDataValue *CreateFromLine(const std::string &data, const char *delimiter);

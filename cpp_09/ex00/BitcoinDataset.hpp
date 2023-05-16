@@ -3,17 +3,20 @@
 # include <stdexcept>
 # include <fstream>
 # include <string>
+# include <map>
 
 class BitcoinDataset
 {
 public:
 	BitcoinDataset(const std::string &file = "data.csv");
-	BitcoinDataset(const BitcoinDataset &other);
 	~BitcoinDataset();
 
 	BitcoinDataset &operator=(const BitcoinDataset &other);
 
 private:
+	BitcoinDataset();
+	BitcoinDataset(const BitcoinDataset &other);
+
 	void Load(const std::string &file);
 	void AddLine(const std::string &line);
 
