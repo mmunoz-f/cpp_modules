@@ -11,7 +11,8 @@ class BitcoinDataset
 	data_map m_data;
 
 public:
-	BitcoinDataset(const std::string &file = "data.csv");
+	BitcoinDataset();
+	BitcoinDataset(const std::string &file);
 	BitcoinDataset(const BitcoinDataset &other);
 	~BitcoinDataset();
 
@@ -22,4 +23,6 @@ public:
 private:
 	void Load(const std::string &file);
 	void AddLine(const std::string &line);
+
+	static bool IsHeader(const std::string &line);
 };

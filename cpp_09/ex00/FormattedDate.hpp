@@ -1,5 +1,6 @@
 #pragma once
 
+#include <ostream>
 #include <string>
 
 #define FEBRUARY 2
@@ -22,7 +23,10 @@ public:
 	
 	FormattedDate &operator=(const FormattedDate &other);
 
+	bool operator==(const FormattedDate &other) const;
 	bool operator<(const FormattedDate &other) const;
+	
+	int operator-(const FormattedDate &other) const;
 
 	void SetYear(const int &year);
 	void SetMonth(const int &month);
@@ -32,5 +36,7 @@ public:
 	int GetMonth() const;
 	int GetDay() const;
 
-	std::string ToString() const;
+	bool Closer(const FormattedDate &date1, const FormattedDate& date2) const;
 };
+
+std::ostream &operator<<(std::ostream &out, const FormattedDate &date);

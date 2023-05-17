@@ -2,6 +2,7 @@
 
 #include <string>
 #include "BitcoinDataset.hpp"
+#include "BitcoinDataValue.hpp"
 
 class BitcoinExchange
 {
@@ -10,12 +11,14 @@ class BitcoinExchange
 	BitcoinExchange();
 	BitcoinExchange(const BitcoinExchange &other);
 	BitcoinExchange &operator=(const BitcoinExchange &other);
+
+	static bool IsHeader(const std::string &line);
+
 public:
 	BitcoinExchange(const BitcoinDataset &data);
 
 	~BitcoinExchange();
 
-	float Exchange(const FormattedDate &date, const float &amount);
-	float Exchange(const std::string &line, const std::string &delimiter = " | ");
+	float Exchange(const BitcoinDataValue &data);
 	void ExchangeFile(const std::string &file);
 };

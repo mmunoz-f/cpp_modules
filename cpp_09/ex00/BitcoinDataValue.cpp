@@ -46,9 +46,9 @@ void BitcoinDataValue::SetDate(const std::string &value)
 
 void BitcoinDataValue::SetValue(const float &value)
 {
-	if (value < 0 || value > 1000)
+	if (value < 0)
 	{
-		throw std::invalid_argument("exchange rate value must be between 0 and 1000");
+		throw std::invalid_argument("not a positive number");
 	}
 	this->m_value = value;
 }

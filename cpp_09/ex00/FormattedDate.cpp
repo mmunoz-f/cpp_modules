@@ -16,7 +16,7 @@ FormattedDate::FormattedDate(const std::string &value)
 
 	if (ret != &str[value.length()])
 	{
-		throw std::invalid_argument("invalid date format, expected yyyy-mm-dd");
+		throw std::invalid_argument("invalid date");
 	}
 
 	SetYear(tm.tm_year + 1900);
@@ -44,11 +44,17 @@ FormattedDate &FormattedDate::operator=(const FormattedDate &other)
 	return *this;
 }
 
+bool FormattedDate::operator==(const FormattedDate &other) const
+{
+	return m_year == other.m_year && m_month == other.m_month && m_day == other.m_day;
+}
+
 bool FormattedDate::operator<(const FormattedDate &other) const
 {
 	return m_year < other.m_year
-			|| (m_month < other.m_month && m_year < other.m_year)
-			|| (m_day < other.m_day && m_month < other.m_month && m_year < other.m_year);
+		|| (m_year == other.m_year
+			&& (m_month < other.m_month
+				|| (m_month == other.m_month && m_day < other.m_day)));
 }
 
 void FormattedDate::SetYear(const int &year)
@@ -116,4 +122,25 @@ int FormattedDate::MaxDaysOfMonth(const int &month, const int &year)
 	}
 
 	return max_days;
+}
+
+std::ostream &operator<<(std::ostream &out, const FormattedDate &date)
+{
+	return out << date.GetYear() << "-" << date.GetMonth() << "-" << date.GetDay();
+}
+
+bool FormattedDate::Closer(const FormattedDate &date1, const FormattedDate &date2) const
+{
+	int years_diff1 = abs(m_year - date1.m_year);
+	int months_diff1 = abs(m_month - date1.m_month);
+	int days_diff1 = abs(m_day - date1.m_day);
+	
+	int years_diff2 = abs(m_year - date2.m_year);
+	int months_diff2 = abs(m_month - date2.m_month);
+	int days_diff2 = abs(m_day - date2.m_day);
+
+	return years_diff1 < years_diff2
+		|| (years_diff1 == years_diff2
+			&& (months_diff1 < months_diff2
+				|| (months_diff1 == months_diff2 && days_diff1 < days_diff2)));
 }
