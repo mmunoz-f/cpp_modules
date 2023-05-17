@@ -3,8 +3,16 @@ NAME		:= btc
 CXX			:= clang++
 CXXFLAGS	:= -Wall -Werror -Werror -g -fsanitize=address
 
-SRCS		:= main.cpp DataReader.cpp
+OBJ_DIR		:= obj/
+
+SRCS		:= main.cpp BitcoinDataValue.cpp BitcoinExchange.cpp BitcoinDataset.cpp FormattedDate.cpp
 OBJS		:= $(SRCS:.cpp=.o)
+
+# OBJS		:= $(SRCS:$(SRC_DIR)%.c=$(OBJ_DIR)%.o)
+
+# $(OBJ_DIR)%.o: $(SRC_DIR)%.c
+# 	mkdir -p $(@D)
+# 	$(CC) $(CFLAGS) -c $< -o $@
 
 .Phopy: all
 all: $(NAME)

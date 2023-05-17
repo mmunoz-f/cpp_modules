@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 #include "FormattedDate.hpp"
 
@@ -9,6 +11,7 @@ class BitcoinDataValue
 	BitcoinDataValue();
 
 public:
+	BitcoinDataValue(const std::string &line, const std::string &delimiter);
 	BitcoinDataValue(const BitcoinDataValue &other);
 	
 	BitcoinDataValue &operator=(const BitcoinDataValue &other);
@@ -21,6 +24,4 @@ public:
 
 	FormattedDate GetDate() const;
 	float GetValue() const;
-
-	static BitcoinDataValue *CreateFromLine(const std::string &data, const char *delimiter);
 };

@@ -2,12 +2,22 @@
 #include <iostream>
 #include <cstdlib>
 #include <errno.h>
-#include "utils.hpp"
 #include "BitcoinDataValue.hpp"
 
 BitcoinDataValue::BitcoinDataValue()
 {
 
+}
+
+BitcoinDataValue::BitcoinDataValue(const std::string &line, const std::string &delimiter)
+{
+	size_t delimiter_pos = line.find(delimiter);
+
+	std::string raw_date = line.substr(0, delimiter_pos);
+	std::string raw_value = line.substr(delimiter_pos + delimiter.length());
+
+	SetDate(raw_date);
+	SetValue(raw_value);
 }
 
 BitcoinDataValue::BitcoinDataValue(const BitcoinDataValue &other)
@@ -25,6 +35,8 @@ BitcoinDataValue &BitcoinDataValue::operator=(const BitcoinDataValue &other)
 {
 	this->m_date = other.m_date;
 	this->m_value = other.m_value;
+
+	return *this;
 }
 
 void BitcoinDataValue::SetDate(const std::string &value)
@@ -52,12 +64,7 @@ void BitcoinDataValue::SetValue(const std::string &value)
 		throw std::invalid_argument("not a valid exchange rate format");
 	}
 
-	if (raw < 0 || raw > 1000)
-	{
-		throw std::invalid_argument("exchange rate value must be between 0 and 1000");
-	}
-
-	this->m_value = raw;
+	SetValue(raw);
 }
 
 FormattedDate	BitcoinDataValue::GetDate() const
@@ -68,27 +75,4 @@ FormattedDate	BitcoinDataValue::GetDate() const
 float BitcoinDataValue::GetValue() const
 {
 	return this->m_value;
-}
-
-BitcoinDataValue *BitcoinDataValue::CreateFromLine(const std::string &data, const char *delimiter)
-{
-	BitcoinDataValue *data_value = new BitcoinDataValue();
-
-	size_t delimiter_pos = data.find(delimiter);
-
-	std::string raw_date = data.substr(0, delimiter_pos);
-	std::string raw_value = data.substr(delimiter_pos);
-
-	try
-	{
-		data_value->SetDate(raw_date);
-		data_value->SetValue(raw_value);
-	}
-	catch (std::invalid_argument &e)
-	{
-		delete data_value;
-		throw e;
-	}
-
-	return data_value;
 }

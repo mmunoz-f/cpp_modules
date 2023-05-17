@@ -1,6 +1,6 @@
 #include <stdexcept>
 #include <cstdlib>
-#include "utils.hpp"
+#include <time.h>
 #include "FormattedDate.hpp"
 
 FormattedDate::FormattedDate()
@@ -10,14 +10,18 @@ FormattedDate::FormattedDate()
 
 FormattedDate::FormattedDate(const std::string &value)
 {
-	if (value.length() != format.length() || value[4] != '-' || value[7] != '-')
+	struct tm tm;
+	const char *str = value.c_str();
+	char *ret = strptime(str, "%Y-%m-%d", &tm);
+
+	if (ret != &str[value.length()])
 	{
 		throw std::invalid_argument("invalid date format, expected yyyy-mm-dd");
 	}
 
-	SetYear(value.substr(0, 4));
-	SetMonth(value.substr(5, 7));
-	SetDay(value.substr(8, 10));
+	SetYear(tm.tm_year + 1900);
+	SetMonth(tm.tm_mon + 1);
+	SetDay(tm.tm_mday);
 }
 
 FormattedDate::FormattedDate(const FormattedDate &other)
@@ -36,6 +40,15 @@ FormattedDate &FormattedDate::operator=(const FormattedDate &other)
 	m_year = other.m_year;
 	m_month = other.m_month;
 	m_day = other.m_day;
+
+	return *this;
+}
+
+bool FormattedDate::operator<(const FormattedDate &other) const
+{
+	return m_year < other.m_year
+			|| (m_month < other.m_month && m_year < other.m_year)
+			|| (m_day < other.m_day && m_month < other.m_month && m_year < other.m_year);
 }
 
 void FormattedDate::SetYear(const int &year)
@@ -48,16 +61,6 @@ void FormattedDate::SetYear(const int &year)
 	m_year = year;
 }
 
-void FormattedDate::SetYear(const std::string &year)
-{
-	if (IsDigit(year))
-	{
-		throw std::invalid_argument("invalid date format");
-	}
-
-	SetYear(std::atoi(year.c_str()));
-}
-
 void FormattedDate::SetMonth(const int &month)
 {
 	if (month < 1 || month > 12)
@@ -68,15 +71,6 @@ void FormattedDate::SetMonth(const int &month)
 	m_month = month;
 }
 
-void FormattedDate::SetMonth(const std::string &month)
-{
-	if (IsDigit(month))
-	{
-		throw std::invalid_argument("invalid date format");
-	}
-	SetMonth(std::atoi(month.c_str()));
-}
-
 void FormattedDate::SetDay(const int &day)
 {
 	if (day < 1 || day > MaxDaysOfMonth(m_month, m_year))
@@ -85,15 +79,6 @@ void FormattedDate::SetDay(const int &day)
 	}
 
 	m_day = day;
-}
-
-void FormattedDate::SetDay(const std::string &day)
-{
-	if (IsDigit(day))
-	{
-		throw std::invalid_argument("invalid date format");
-	}
-	SetDay(std::atoi(day.c_str()));
 }
 
 int FormattedDate::GetYear() const
@@ -111,14 +96,9 @@ int FormattedDate::GetDay() const
 	return m_day;
 }
 
-std::string FormattedDate::ToString() const
-{
-
-}
-
 bool FormattedDate::IsLeap(const int &year)
 {
-	return year % 4 == 0;
+	return (!(year % 4) && year % 100) || !(year % 400);
 }
 
 int FormattedDate::MaxDaysOfMonth(const int &month, const int &year)
@@ -127,7 +107,7 @@ int FormattedDate::MaxDaysOfMonth(const int &month, const int &year)
 
 	int max_days = months_max_days[month - 1];
 
-	if (month == Month::FEBRUARY)
+	if (month == FEBRUARY)
 	{
 		if (IsLeap(year))
 		{
