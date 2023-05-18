@@ -6,7 +6,7 @@ class RPN
 {
 	typedef void(RPN::*method_function)(void); 
 
-	const std::string available_operations = "+-/*";
+	static const std::string available_operations;
 
 	std::stack<int> m_stack;
 

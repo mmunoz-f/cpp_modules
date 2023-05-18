@@ -166,3 +166,5 @@ const char *RPN::DivisionByZeroError::what() const throw ()
 {
 	return "division by zero";
 }
+
+const std::string RPN::available_operations = "+-/*";

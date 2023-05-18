@@ -1,7 +1,7 @@
 NAME		:= RPN
 
 CXX			:= clang++
-CXXFLAGS	:= -Wall -Werror -Werror -g
+CXXFLAGS	:= -Wall -Werror -Werror -std=c++98
 
 OBJ_DIR		:= obj/
 
@@ -17,6 +17,7 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(CXXFLAGS) -o $@ $^
+
 .Phopy: clean
 clean:
 	rm -rf $(OBJ_DIR)

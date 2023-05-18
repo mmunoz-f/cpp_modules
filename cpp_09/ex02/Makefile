@@ -1,11 +1,11 @@
-NAME		:= btc
+NAME		:= PMergeMe
 
 CXX			:= clang++
 CXXFLAGS	:= -Wall -Werror -Werror -std=c++98
 
 OBJ_DIR		:= obj/
 
-SRCS		:= main.cpp BitcoinDataValue.cpp BitcoinExchange.cpp BitcoinDataset.cpp FormattedDate.cpp
+SRCS		:= main.cpp PMergeMe.cpp
 OBJS		:= $(SRCS:%.cpp=$(OBJ_DIR)%.o)
 
 $(OBJ_DIR)%.o: %.cpp

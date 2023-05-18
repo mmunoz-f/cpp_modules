@@ -57,7 +57,7 @@ void BitcoinDataset::AddLine(const std::string &line)
 
 void BitcoinDataset::Load(const std::string &file)
 {
-	std::ifstream infile(file);
+	std::ifstream infile(file.c_str());
 	std::string line;
 
 	if (!infile.is_open())

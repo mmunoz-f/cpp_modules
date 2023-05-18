@@ -41,7 +41,7 @@ float BitcoinExchange::Exchange(const BitcoinDataValue &data)
 
 void BitcoinExchange::ExchangeFile(const std::string &file)
 {
-	std::ifstream infile(file);
+	std::ifstream infile(file.c_str());
 	std::string line;
 
 	for(size_t line_number = 0; std::getline(infile, line); line_number++)
