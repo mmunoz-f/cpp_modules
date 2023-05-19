@@ -144,9 +144,9 @@ void RPN::Div()
 
 int RPN::GetSolution() const
 {
-	if (m_stack.empty())
+	if (m_stack.size() != 1)
 	{
-		return 0;
+		throw std::invalid_argument("invalid mathematical expression");
 	}
 
 	return m_stack.top();

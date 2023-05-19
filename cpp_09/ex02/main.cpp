@@ -3,10 +3,7 @@
 #include <list>
 #include "PMergeMe.hpp"
 
-void print(int i)
-{
-	std::cout << " " << i;
-}
+
 
 int main(int argc, char **argv)
 {
@@ -19,5 +16,4 @@ int main(int argc, char **argv)
 	{
 		std::cout << "Error: " << e.what() << std::endl;
 	}
-	
 }
