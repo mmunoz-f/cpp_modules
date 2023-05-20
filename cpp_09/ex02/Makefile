@@ -1,7 +1,7 @@
 NAME		:= PMergeMe
 
 CXX			:= clang++
-CXXFLAGS	:= -Wall -Werror -Werror -std=c++98
+CXXFLAGS	:= -Wall -Werror -Werror -std=c++98 -g
 
 OBJ_DIR		:= obj/
 

@@ -3,14 +3,27 @@
 #include <iostream>
 #include <iomanip>
 #include <algorithm>
+#include <iterator>
 #include <ctime>
 
 bool IsPositiveInteger(const std::string &str);
 void print(int i);
 
 template<class T>
+T	next(T &it, size_t n)
+{
+	T tmp(it);
+	std::advance(tmp, n);
+	return tmp; 
+}
+
+template<class T>
 class PMergeMe
 {
+	typedef typename T::iterator iterator;
+	typedef std::vector<int>::iterator vector_iterator;
+	typedef std::list<int>::iterator list_iterator;
+
 protected:
 	T m_container;
 	std::string m_name;
@@ -66,36 +79,90 @@ protected:
 
 	void Sort()
 	{
-		if (m_container.size() < 2)
+		if (m_container.size() == 1)
 		{
 			return;
 		}
-		Sort(m_container.size() / 2);
+
+		Sort(m_container.size());
 	}
 
 	void Sort(size_t chunk_size)
 	{
-		if (chunk_size < 1)
+		if (chunk_size <= 4)
 		{
+			InsertionSort(chunk_size);
+			MergeSort(chunk_size);
 			return;
 		}
+
 		Sort(chunk_size / 2);
+		MergeSort(chunk_size);
+	}
 
-		typename T::iterator begin = m_container.begin(); 
+	void MergeSort(size_t chunk_size)
+	{
+		size_t size = m_container.size() - chunk_size * 2;
+		iterator begin = m_container.begin();
 
-		size_t nchunk = m_container.size() / chunk_size;
-		for (size_t i = 0; i < nchunk; i += 2, std::advance(begin, chunk_size))
+		size_t count = 0;
+		for (; count <= size; count += chunk_size * 2, std::advance(begin, chunk_size * 2))
 		{
-			typename T::iterator tmp(begin);
-			std::advance(begin, chunk_size);
+			MergeSort(begin, chunk_size);
+		}
 
-			MergeInsert(tmp, begin, chunk_size);
+		if (m_container.size() - count)
+		{
+			iterator begin = m_container.begin();
+			iterator
+
+			MergeSort(, m_container.size() - count);
 		}
 	}
 
-	void MergeInsert(typename T::iterator it1, typename T::iterator it2, size_t chunk_size)
+	void MergeSort(iterator begin, size_t chunk_size)
+	{
+		iterator end = next(begin, chunk_size);
+		iterator it2 = end;
+		iterator end2 = next(it2, chunk_size);
+
+		MergeSort(begin, end, it2, end2, chunk_size);
+	}
+
+	void MergeSort(iterator begin1, iterator end1, iterator begin2, iterator end2, size_t total)
 	{
 
+	}
+
+	void InsertionSort(size_t chunk_size)
+	{
+		size_t size = m_container.size() - chunk_size;
+		iterator begin = m_container.begin();
+
+		size_t count = 0;
+		for (; count <= size; count += chunk_size, std::advance(begin, chunk_size))
+		{
+			InsertionSort(begin, chunk_size);
+		}
+
+		InsertionSort(begin, m_container.size() - count);
+	}
+
+	void InsertionSort(iterator begin, size_t chunk_size)
+	{
+		for (int i = 1; i < chunk_size; ++i)
+		{
+			int j = i - 1;
+			int value = *next(begin, i);
+
+			for (;j >= 0 && *next(begin, j) > value;)
+			{
+				*next(begin, j + 1) = *next(begin, j);
+				--j;
+			}
+
+			*next(begin, j + 1) = value;
+		}
 	}
 
 public:
@@ -148,26 +215,37 @@ void PMergeMe<std::list<int> >::SetContainerName()
 }
 
 template<>
-void PMergeMe<std::vector<int> >::MergeInsert(std::vector<int>::iterator it1, std::vector<int>::iterator it2, size_t chunk_size)
+void PMergeMe<std::vector<int> >::MergeSort(vector_iterator begin, vector_iterator end, vector_iterator it2, vector_iterator end2, size_t total)
 {
-	std::vector<int> tmp(it1, it2);
+	std::vector<int> tmp(begin, end);
+	std::vector<int>::iterator it1 = tmp.begin();
+	std::vector<int>::iterator end1 = tmp.end();
 
-	for (size_t i = 0; i < chunk_size; ++i, ++it1)
+	for (size_t i = 0; i < total; ++i, ++begin)
 	{
-		if (*it2 < tmp[i])
+		if (it2 == end2 || (it1 != end1 && *it1 < *it2))
 		{
-			*it1 = *it2;
-			*(++it1) = tmp[i];
+			*begin = *(it1++);
 		}
 		else
 		{
-			*(++it2) = *it2;
+			*begin = *(it2++);
 		}
 	}
 }
 
 template<>
-void PMergeMe<std::list<int> >::MergeInsert(std::list<int>::iterator it1, std::list<int>::iterator it2, size_t chunk_size)
+void PMergeMe<std::list<int> >::MergeSort(list_iterator it1, list_iterator end1, list_iterator it2, list_iterator end2, size_t total)
 {
-
+	for (size_t i = 0; i < total; i++)
+	{
+		if (it1 == end1 || (it2 != end2 && *it2 < *it1))
+		{
+			m_container.splice(it1, m_container, it2++);
+		}
+		else
+		{
+			it1++;
+		}
+	}
 }
