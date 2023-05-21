@@ -42,10 +42,11 @@ float BitcoinDataset::operator[](const FormattedDate &date) const
 		return it->second;
 	}
 
-	data_map::const_iterator greater_it = it--;
-	data_map::const_iterator lower_it = it;
+	return (--it)->second;
+	// data_map::const_iterator greater_it = it--;
+	// data_map::const_iterator lower_it = it;
 	
-	return date.Closer(lower_it->first, greater_it->first)? lower_it->second : greater_it->second;
+	// return date.Closer(lower_it->first, greater_it->first)? lower_it->second : greater_it->second;
 }
 
 void BitcoinDataset::AddLine(const std::string &line)

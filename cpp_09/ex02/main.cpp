@@ -1,16 +1,13 @@
 #include <iostream>
-#include <vector>
-#include <list>
-#include "PMergeMe.hpp"
-
-
+#include "ListMergeMe.hpp"
+#include "VectorMergeMe.hpp"
 
 int main(int argc, char **argv)
 {
 	try
 	{
-		PMergeMe<std::vector<int> >::Test(argv);
-		PMergeMe<std::list<int> >::Test(argv);
+		VectorMergeMe::Test(argv);
+		ListMergeMe::Test(argv);
 	}
 	catch(const std::exception& e)
 	{

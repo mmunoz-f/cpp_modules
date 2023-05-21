@@ -1,5 +1,6 @@
 #include <stdexcept>
 #include <cstdlib>
+#include <iomanip>
 #include <time.h>
 #include "FormattedDate.hpp"
 
@@ -126,7 +127,9 @@ int FormattedDate::MaxDaysOfMonth(const int &month, const int &year)
 
 std::ostream &operator<<(std::ostream &out, const FormattedDate &date)
 {
-	return out << date.GetYear() << "-" << date.GetMonth() << "-" << date.GetDay();
+	return out << std::setw(4) << std::setfill('0') << date.GetYear()
+		<< "-" << std::setw(2) << std::setfill('0') << date.GetMonth()
+		<< "-" << std::setw(2) << std::setfill('0') << date.GetDay();
 }
 
 bool FormattedDate::Closer(const FormattedDate &date1, const FormattedDate &date2) const

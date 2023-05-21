@@ -1,3 +1,5 @@
+#pragma once
+
 #include <stdexcept>
 #include <string>
 #include <iostream>
@@ -9,23 +11,21 @@
 bool IsPositiveInteger(const std::string &str);
 void print(int i);
 
-template<class T>
-T	next(T &it, size_t n)
+template<class Container>
+Container	next(Container &it, size_t n)
 {
-	T tmp(it);
+	Container tmp(it);
 	std::advance(tmp, n);
 	return tmp; 
 }
 
-template<class T>
+template<class Container>
 class PMergeMe
 {
-	typedef typename T::iterator iterator;
-	typedef std::vector<int>::iterator vector_iterator;
-	typedef std::list<int>::iterator list_iterator;
+	typedef typename Container::iterator iterator;
 
 protected:
-	T m_container;
+	Container m_container;
 	std::string m_name;
 
 	PMergeMe()
@@ -34,38 +34,7 @@ protected:
 		SetContainerName();
 	}
 
-	PMergeMe(const PMergeMe &other)
-		: m_container(other.m_container), m_name(other.m_name)
-	{
-
-	}
-
-	PMergeMe(char **argv)
-		: m_container()
-	{
-		SetContainerName();
-
-		for (size_t i = 1; argv[i]; i++)
-		{
-			Push(argv[i]);
-		}
-	}
-
-	~PMergeMe()
-	{
-
-	}
-
-	PMergeMe &operator=(const PMergeMe &other)
-	{
-		m_container = other.m_container;
-		m_name = other.m_name;
-	}
-
-	void SetContainerName()
-	{
-
-	}
+	virtual void SetContainerName() {};
 
 	void Push(const char *arg)
 	{
@@ -77,80 +46,47 @@ protected:
 		m_container.push_back(std::atoi(arg));
 	}
 
-	void Sort()
+	virtual void Sort(iterator begin, iterator end)
 	{
-		if (m_container.size() == 1)
+		size_t size = std::distance(begin, end);
+		if (size <= 2)
 		{
-			return;
+			InsertionSort(begin, end);
 		}
-
-		Sort(m_container.size());
-	}
-
-	void Sort(size_t chunk_size)
-	{
-		if (chunk_size <= 4)
+		else
 		{
-			InsertionSort(chunk_size);
-			MergeSort(chunk_size);
-			return;
-		}
+			iterator middle = next(begin, size / 2);
 
-		Sort(chunk_size / 2);
-		MergeSort(chunk_size);
-	}
-
-	void MergeSort(size_t chunk_size)
-	{
-		size_t size = m_container.size() - chunk_size * 2;
-		iterator begin = m_container.begin();
-
-		size_t count = 0;
-		for (; count <= size; count += chunk_size * 2, std::advance(begin, chunk_size * 2))
-		{
-			MergeSort(begin, chunk_size);
-		}
-
-		if (m_container.size() - count)
-		{
-			iterator begin = m_container.begin();
-			iterator
-
-			MergeSort(, m_container.size() - count);
+			Sort(begin, middle);
+			Sort(middle, end);
+			MergeSort(begin, middle, end);
 		}
 	}
 
-	void MergeSort(iterator begin, size_t chunk_size)
+	virtual void MergeSort(iterator begin, iterator middle, iterator end)
 	{
-		iterator end = next(begin, chunk_size);
-		iterator it2 = end;
-		iterator end2 = next(it2, chunk_size);
+		Container tmp(begin, middle);
+		iterator it1 = tmp.begin();
+		iterator end1 = tmp.end();
 
-		MergeSort(begin, end, it2, end2, chunk_size);
-	}
-
-	void MergeSort(iterator begin1, iterator end1, iterator begin2, iterator end2, size_t total)
-	{
-
-	}
-
-	void InsertionSort(size_t chunk_size)
-	{
-		size_t size = m_container.size() - chunk_size;
-		iterator begin = m_container.begin();
-
-		size_t count = 0;
-		for (; count <= size; count += chunk_size, std::advance(begin, chunk_size))
+		for (;it1 != end1 || middle != end; ++begin)
 		{
-			InsertionSort(begin, chunk_size);
+			if (middle == end || (it1 != end1 && *it1 < *middle))
+			{
+				*begin = *(it1++);
+			}
+			else
+			{
+				*begin = *(middle++);
+			}
 		}
-
-		InsertionSort(begin, m_container.size() - count);
 	}
 
-	void InsertionSort(iterator begin, size_t chunk_size)
+	void InsertionSort(iterator begin, iterator end)
 	{
-		for (int i = 1; i < chunk_size; ++i)
+		size_t size = std::distance(begin, end);
+
+		for (int i = 1; i < size; ++i)
 		{
 			int j = i - 1;
 			int value = *next(begin, i);
@@ -166,21 +102,63 @@ protected:
 	}
 
 public:
+	PMergeMe(const PMergeMe &other)
+		: m_container(other.m_container), m_name(other.m_name)
+	{
+
+	}
+
+	virtual ~PMergeMe()
+	{
+
+	}
+
+	PMergeMe &operator=(const PMergeMe &other)
+	{
+		m_container = other.m_container;
+		m_name = other.m_name;
+
+		return *this;
+	}
+
+
+	PMergeMe(char **argv)
+		: m_container()
+	{
+		SetContainerName();
+
+		for (size_t i = 1; argv[i]; i++)
+		{
+			Push(argv[i]);
+		}
+	}
+
+	void Sort()
+	{
+		if (m_container.size() == 1)
+		{
+			return;
+		}
+
+		Sort(m_container.begin(), m_container.end());
+	}
+
+	template<class T>
 	static void Test(char **argv)
 	{
-		std::time_t init = std::time(NULL);
-		PMergeMe pmm(argv);
-		std::time_t end = std::time(NULL);
-		double process_time = std::difftime(end, init);
+		std::clock_t init = std::clock();
+		T pmm(argv);
+		std::clock_t end = std::clock();
+		double process_time = static_cast<double>(end - init) / CLOCKS_PER_SEC;
 
 		std::cout << "Before : ";
 		std::for_each(pmm.m_container.begin(), pmm.m_container.end(), print);
 		std::cout << std::endl;
 
-		init = std::time(NULL);
+		init = std::clock();
 		pmm.Sort();
-		end = std::time(NULL);
-		double sort_time = std::difftime(end, init);
+		end = std::clock();
+		double sort_time = static_cast<double>(end - init) / CLOCKS_PER_SEC;
 
 		std::cout << "After  : ";
 		std::for_each(pmm.m_container.begin(), pmm.m_container.end(), print);
@@ -190,62 +168,7 @@ public:
 			<< std::setw(5) << pmm.m_container.size()
 			<< " elements with "
 			<< std::setw(15) << pmm.m_name << " : "
-			<< std::setw(8) << process_time * 1000.0f << " us"
-			<< std::endl;
-
-		std::cout << "Time to sort a range of    "
-			<< std::setw(5) << pmm.m_container.size()
-			<< " elements with "
-			<< std::setw(15) << pmm.m_name << " : "
-			<< std::setw(8) << sort_time * 1000.0f << " us"
+			<< std::setw(8) << (process_time + sort_time) * 1000.0f << " us"
 			<< std::endl;
 	}
 };
-
-template<>
-void PMergeMe<std::vector<int> >::SetContainerName()
-{
-	m_name = "std::vector";
-}
-
-template<>
-void PMergeMe<std::list<int> >::SetContainerName()
-{
-	m_name = "std::list";
-}
-
-template<>
-void PMergeMe<std::vector<int> >::MergeSort(vector_iterator begin, vector_iterator end, vector_iterator it2, vector_iterator end2, size_t total)
-{
-	std::vector<int> tmp(begin, end);
-	std::vector<int>::iterator it1 = tmp.begin();
-	std::vector<int>::iterator end1 = tmp.end();
-
-	for (size_t i = 0; i < total; ++i, ++begin)
-	{
-		if (it2 == end2 || (it1 != end1 && *it1 < *it2))
-		{
-			*begin = *(it1++);
-		}
-		else
-		{
-			*begin = *(it2++);
-		}
-	}
-}
-
-template<>
-void PMergeMe<std::list<int> >::MergeSort(list_iterator it1, list_iterator end1, list_iterator it2, list_iterator end2, size_t total)
-{
-	for (size_t i = 0; i < total; i++)
-	{
-		if (it1 == end1 || (it2 != end2 && *it2 < *it1))
-		{
-			m_container.splice(it1, m_container, it2++);
-		}
-		else
-		{
-			it1++;
-		}
-	}
-}

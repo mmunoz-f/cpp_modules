@@ -5,7 +5,7 @@ CXXFLAGS	:= -Wall -Werror -Werror -std=c++98 -g
 
 OBJ_DIR		:= obj/
 
-SRCS		:= main.cpp PMergeMe.cpp
+SRCS		:= main.cpp PMergeMe.cpp VectorMergeMe.cpp ListMergeMe.cpp
 OBJS		:= $(SRCS:%.cpp=$(OBJ_DIR)%.o)
 
 $(OBJ_DIR)%.o: %.cpp
